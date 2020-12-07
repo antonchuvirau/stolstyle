@@ -122,7 +122,7 @@
             if (this._isPromocode) {
                 this.updateBasketOrderData(`promocode_name`, this._promocodeName);
                 this.updateBasketOrderData(`promocode_value`, this._promocodeValue);
-                this.updateBasketOrderData(`promocode_price`, this._basketTotalPrice - this._basketTotalPriceWithSale);
+                this.updateBasketOrderData(`promocode_price`, (this._basketTotalPrice - this._basketTotalPriceWithSale).toFixed(1));
                 this.updateBasketOrderData(`total_price_with_sale`, this._basketTotalPriceWithSale);
             }
             else {
@@ -316,23 +316,24 @@
         }
 
         calculateBasketProductsPrice(productsData) {
-            let basketProductsPrice = 0;
             // Скидываем значение до ноля
             this._basketProductsPrice = 0;
+            // Создаем промежуточную перменную
+            let basketProductsPrice = 0;
 
             productsData.forEach(productData => {
                 basketProductsPrice += productData.price;
             });
-            this._basketProductsPrice = basketProductsPrice.toFixed(1);
+            this._basketProductsPrice = +basketProductsPrice.toFixed(1);
             this.showBasketProductsPrice();
         }
 
         calculateBasketTotalPrice(isPromocode = this._isPromocode, promocodeValue = this._promocodeValue) {
             let basketTotalPrice = this._basketProductsPrice + this._basketDeliveryData.price;
-            this._basketTotalPrice = basketTotalPrice.toFixed(1);
+            this._basketTotalPrice = +basketTotalPrice.toFixed(1);
             if (isPromocode) {
                 let totalPriceWithSale = (this._basketProductsPrice + this._basketDeliveryData.price) - ((this._basketProductsPrice + this._basketDeliveryData.price) * (+promocodeValue / 100));
-                this._basketTotalPriceWithSale = totalPriceWithSale.toFixed(1);
+                this._basketTotalPriceWithSale = +totalPriceWithSale.toFixed(1);
                 this.showBasketTotalPrice(true);
             }
             else {
