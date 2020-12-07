@@ -1,0 +1,47 @@
+// -----------------------------------------------------------------------------
+// This file contains all @font-face declarations, if any.
+// -----------------------------------------------------------------------------
+@font-face {
+    font-family: 'Jost';
+    src: font('subset-Jost-Heavy.woff2') format('woff2'),
+        font('subset-Jost-Heavy.woff') format('woff');
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Jost';
+    src: font('subset-Jost-Semi.woff2') format('woff2'),
+        font('subset-Jost-Semi.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Jost';
+    src: font('subset-Jost-Book.woff2') format('woff2'),
+        font('subset-Jost-Book.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Jost';
+    src: font('subset-Jost-Bold.woff2') format('woff2'),
+        font('subset-Jost-Bold.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Jost';
+    src: font('subset-Jost-Medium.woff2') format('woff2'),
+        font('subset-Jost-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}

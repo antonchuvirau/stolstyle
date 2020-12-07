@@ -1,0 +1,128 @@
+{
+    "products": [
+        {
+            "id": 0,
+            "name": "Накладка",
+            "type": "product",
+            "checked": true
+        },
+        {
+            "id": 1,
+            "name": "Скатерть",
+            "type": "product",
+            "checked": false
+        }
+    ],
+    "tables": [
+        {
+            "id": 0,
+            "productIndex": 0,
+            "name": "Прямоугольный",
+            "type": "table",
+            "checked": true,
+            "hidden": false
+        },
+        {
+            "id": 1,
+            "productIndex": 0,
+            "name": "Круглый",
+            "type": "table",
+            "checked": false,
+            "hidden": false
+        },
+        {
+            "id": 2,
+            "productIndex": 0,
+            "name": "Фигурный",
+            "type": "table",
+            "checked": false,
+            "hidden": false
+        },
+        {
+            "id": 3,
+            "productIndex": 1,
+            "name": "Прямоугольный",
+            "type": "table",
+            "checked": true,
+            "hidden": true
+        }
+    ],
+    "covers": [
+        {
+            "id": 0,
+            "productIndex": 0,
+            "name": "Глянцевая 1.8 мм",
+            "type": "cover",
+            "checked": true,
+            "hidden": false
+        },
+        {
+            "id": 1,
+            "productIndex": 0,
+            "name": "Глянцевая 2.5 мм",
+            "type": "cover",
+            "checked": false,
+            "hidden": false
+        },
+        {
+            "id": 2,
+            "productIndex": 0,
+            "name": "Рифлёная 1.8 мм",
+            "type": "cover",
+            "checked": false,
+            "hidden": false
+        },
+        {
+            "id": 3,
+            "productIndex": 1,
+            "name": "Глянцевая 0.6 мм",
+            "type": "cover",
+            "checked": true,
+            "hidden": true
+        }
+    ],
+    "inputs": [
+        {
+            "id": 0,
+            "productIndex": 0,
+            "tableTypeIndex": [0,2],
+            "name": "Ширина стола (см)",
+            "type": "width",
+            "hidden": false
+        },
+        {
+            "id": 1,
+            "productIndex": 0,
+            "tableTypeIndex": [0,2],
+            "name": "Длина стола (см)",
+            "type": "length",
+            "hidden": false
+        },
+        {
+            "id": 2,
+            "productIndex": 0,
+            "tableTypeIndex": [1],
+            "name": "Диаметр стола (см)",
+            "type": "diameter",
+            "hidden": true
+        },
+        {
+            "id": 3,
+            "productIndex": 1,
+            "tableTypeIndex": [0,2],
+            "defaultValue": 135,
+            "name": "Ширина скатерти (см)",
+            "type": "width",
+            "disabled": true,
+            "hidden": true
+        },
+        {
+            "id": 4,
+            "productIndex": 1,
+            "tableTypeIndex": [0,2],
+            "name": "Длина скатерти (см)",
+            "type": "length",
+            "hidden": true
+        }
+    ]
+}

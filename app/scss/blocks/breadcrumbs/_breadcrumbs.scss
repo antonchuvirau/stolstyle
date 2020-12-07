@@ -1,0 +1,31 @@
+.breadcrumbs {
+    @include flex(row, center, flex-start);
+    &__link {
+        text-decoration: none;
+        font-size: 1.4rem;
+        line-height: 1.25;
+        color: $gray-color;
+        &[href]:hover {
+            color: $primary-color;
+        }
+        &[href] {
+            position: relative;
+            &::after {
+                content: '';
+                position: absolute;
+                width: 15px;
+                height: 15px;
+                background: icon('s-icon-arrow.svg') no-repeat 50%;
+                top: 50%;
+                margin-top: -7.5px;
+                left: calc(100% + 5px);
+            }
+        }
+    }
+    &__item {
+        margin-right: 25px;
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+}

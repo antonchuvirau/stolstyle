@@ -1,0 +1,32 @@
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Sass mixins.
+// -----------------------------------------------------------------------------
+
+@mixin flex($flex-direction: row, $align-items: flex-start, $justify-content: flex-start) {
+  display: flex;
+  flex-direction: $flex-direction;
+  justify-content: $justify-content;
+  align-items: $align-items;
+}
+
+@mixin font-weight($weight) {
+  @if $weight=='normal' {
+    font-weight: map-get($font-weight, $weight);
+  }
+  @else if $weight=='medium' {
+    font-weight: map-get($font-weight, $weight);
+  }
+  @else if $weight=='semi' {
+    font-weight: map-get($font-weight, $weight);
+  }
+  @else if $weight=='bold' {
+    font-weight: map-get($font-weight, $weight);
+  }
+  @else if $weight=='extra' {
+    font-weight: map-get($font-weight, $weight);
+  }
+}
+
+@mixin font() {
+  font-family: $font;
+}

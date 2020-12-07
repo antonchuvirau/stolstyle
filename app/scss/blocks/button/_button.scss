@@ -1,0 +1,58 @@
+.button {
+    line-height: 1.56;
+    @include flex(row, center, center);
+    background: $primary-color;
+    color: $white-color;
+    text-decoration: none;
+    border-radius: 5px;
+    height: 40px;
+    padding: 0 15px;
+    &_size {
+        &-l {
+            height: 60px;
+            padding: 0 30px;
+            font-size: 2.4rem;
+            @include font-weight('bold');
+            letter-spacing: -.02em;
+        }
+    }
+    & svg {
+        flex-shrink: 0;
+        margin-right: 5px;
+    }
+    &:hover {
+        background: $primary-color-darker;
+    }
+    &:active {
+        background: darken($primary-color-darker, 3%);
+    }
+    &:disabled {
+        background: $disabled-color;
+        cursor: not-allowed;
+    }
+    &_type {
+        &-secondary {
+            color: $primary-color;
+            background: $primary-color-lightest;
+            &:hover {
+                background: $primary-color-lighter;
+            }
+            &:active {
+                background: darken($primary-color-lighter, 3%);
+            }
+            &:disabled {
+                background: $light-color;
+                color: $gray-color;
+                & svg {
+                    & path {
+                        fill: $gray-color;
+                    }
+                }
+            }
+        }
+    }
+    &_progress {
+        opacity: .5;
+        pointer-events: none;
+    }
+}

@@ -1,0 +1,40 @@
+.quantity {
+    @include flex(row, stretch, center);
+    height: 50px;
+    width: 150px;
+    padding: 0 15px;
+    &__input {
+        width: 60px;
+        height: 100%;
+        text-align: center;
+        font-size: 1.8rem;
+        line-height: 1.25;
+        padding: 0 10px;
+        cursor: default;
+        pointer-events: none;
+    }
+    &__btn {
+        width: 30px;
+        height: 30px;
+        align-self: center;
+        & svg {
+            pointer-events: none;
+        }
+        &:hover {
+            & svg {
+                pointer-events: none;
+                & path {
+                    fill: darken(#C4C4C4, 3%);
+                }
+            }
+        }
+        &:active {
+            & svg {
+                pointer-events: none;
+                & path {
+                    fill: darken(#C4C4C4, 5%);
+                }
+            }
+        }
+    }
+}

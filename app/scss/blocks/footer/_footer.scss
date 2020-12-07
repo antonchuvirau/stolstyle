@@ -1,0 +1,123 @@
+.footer {
+    padding: 50px 0;
+    padding-bottom: 10px;
+    &_style {
+        &-bg {
+            background: $tertiary-color;
+        }
+    }
+    &__copyright {
+        margin: 0;
+        text-align: center;
+        font-size: 1.4rem;
+        line-height: 1.25;
+        color: $gray-color;
+        margin-top: 130px;
+        text-align: left;
+        padding-top: 10px;
+        border-top: 1px solid #EAEAEA;
+    }
+    &__logo {
+        margin-bottom: 20px;
+    }
+    &__menu {
+        @include flex(row, flex-start, flex-start);
+        &-col {
+            @include flex(column, flex-start, flex-start);
+            margin-left: 50px;
+        }
+        &-link {
+            text-decoration: none;
+            font-size: 1.8rem;
+            line-height: 1.25;
+            color: $black-color;
+            margin-bottom: 15px;
+            white-space: nowrap;
+            position: relative;
+            &::after {
+                content: '';
+                position: absolute;
+                width: 100%;
+                height: 1px;
+                background: $primary-color-lighter;
+                top: calc(100% - 1px);
+                left: 0;
+            }
+            &:hover {
+                &::after {
+                    background: $primary-color;
+                }
+            }
+            &:last-child {
+                margin-bottom: 0;
+            }
+            &[target="_blank"] {
+                position: relative;
+                margin-left: 20px;
+                & svg {
+                    position: absolute;
+                    left: -20px;
+                    top: 50%;
+                    margin-top: -7.5px;
+                }
+            }
+        }
+    }
+    &__info {
+        @include flex(column, flex-end, flex-start);
+        &-link {
+            text-decoration: none;
+            font-size: 2.4rem;
+            letter-spacing: -.02em;
+            line-height: 1.25;
+            @include font-weight('bold');
+            color: $black-color;
+            margin-bottom: 10px;
+            &_less {
+                font-size: 2.2rem;
+			    font-weight: 500;
+            }
+            &:hover {
+                opacity: .8;
+            }
+        }
+        &-text {
+            margin: 0;
+            margin-top: 10px;
+            font-size: 1.4rem;
+            color: $gray-color;
+        }
+    }
+    &_location {
+        &-page {
+            background: $tertiary-color;
+        }
+    }
+    &__webpay {
+        margin-top: 10px;
+    }
+    &__text {
+        margin: 0;
+        font-size: 1.3rem;
+        line-height: 1.45;
+    }
+    &__payment {
+        &-icons {
+            position: absolute;
+            bottom: calc(100% + 40px);
+            right: 15px;
+            width: 350px;
+            text-align: right;
+            z-index: 1;
+        }
+        &-image {
+            display: inline-block;
+            margin-bottom: 10px;
+            &:last-child {
+                margin-bottom: 0;
+				max-width: 250px;
+            }
+        }
+    }
+
+}

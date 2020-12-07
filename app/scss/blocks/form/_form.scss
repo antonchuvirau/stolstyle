@@ -1,0 +1,99 @@
+.form {
+    &__row {
+        position: relative;
+        @include flex(column, stretch, flex-start);
+        margin-bottom: 30px;
+        width: 100%;
+        &:last-child {
+            margin-bottom: 0;
+        }
+        &_state {
+            &-disabled {
+                display: none;
+                margin: 0;
+            }
+            &-active {
+                margin: 0;
+                display: block;
+                margin-top: 10px;
+            }
+        }
+    }
+    &__label {
+        display: inline-block;
+        text-align: left;
+        margin: 0;
+        line-height: 1.25;
+        margin-bottom: 5px;
+    }
+    &__input {
+        width: 100%;
+        height: 50px;
+        border: 1px solid $disabled-color;
+        border-radius: 5px;
+        font-size: 1.8rem;
+        color: $black-color;
+        &:focus {
+            border-color: $black-color;
+        }
+        &:disabled {
+            color: $full-black-color;
+            pointer-events: none;
+            background: $light-color;
+            border-color: $light-color;
+        }
+        &.error {
+            border-color: $error-color;
+            & + span.wpcf7-not-valid-tip {
+                display: block;
+            }
+        }
+    }
+    &__select {
+        height: 50px;
+        width: 100%;
+        border: 1px solid $disabled-color;
+        border-radius: 5px;
+        position: relative;
+        &::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: icon('s-icon-select.svg') no-repeat 50%;
+            top: 50%;
+            margin-top: -10px;
+            right: 15px;
+        }
+        & select {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            z-index: 1;
+            padding: 0 15px;
+        }
+    }
+    &__button {
+        &_state-in-progress {
+            opacity: .5;
+            pointer-events: none;
+        }
+    }
+}
+
+.wpcf7-form-control-wrap {
+    position: relative;
+}
+
+span.wpcf7-not-valid-tip {
+    display: none;
+    position: absolute;
+    top: calc(100% + 3px);
+    left: 0;
+    font-size: 1.2rem;
+    white-space: nowrap;
+}
+
+div.wpcf7-response-output {
+    display: none !important;
+}

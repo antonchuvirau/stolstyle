@@ -1,0 +1,24 @@
+.news-item {
+    margin-bottom: 25px;
+    &__title {
+        text-decoration: none;
+        color: $black-color;
+        font-size: 1.8rem;
+        line-height: 1.45;
+        position: relative;
+        display: inline;
+        border-bottom: 1px solid $primary-color;
+        &:hover {
+            opacity: .8;
+        }
+    }
+    &__date {
+        margin: 0;
+        line-height: 1.25;
+        color: $gray-color;
+        margin-top: 10px;
+    }
+    &:last-child {
+        margin-bottom: 0;
+    }
+}

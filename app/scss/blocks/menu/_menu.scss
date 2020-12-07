@@ -1,0 +1,25 @@
+.menu {
+    &__wrapper {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        @include flex(row, center, flex-start);
+    }
+    &__item {
+        margin-right: 25px;
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+    &__link {
+        text-decoration: none;
+        line-height: 1.56;
+        color: $gray-color;
+        &:hover {
+            color: darken($gray-color, 20%);
+        }
+        &:active {
+            color: $black-color;
+        }
+    }
+}

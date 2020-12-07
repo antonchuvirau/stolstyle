@@ -1,0 +1,29 @@
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Sass variables.
+// -----------------------------------------------------------------------------
+$font: 'Jost';
+$base-path: '../';
+//Colors
+$white-color: #fff;
+$black-color: #100227;
+$full-black-color: #000;
+$primary-color: #8B71B5;
+$light-color: #EAEAEA;
+$gray-color: #787878;
+$gray-color-darker: #575757;
+$primary-color-darker: #7154A1;
+$primary-color-lighter: #E5DFFC;
+$primary-color-lightest: #F4F1FD;
+$disabled-color: #dedede;
+$secondary-color: #FFF2E2;
+$tertiary-color: #F2F8F6;
+$error-color: #f00;
+$success-color: green;
+//Font weight
+$font-weight: (
+    'normal': normal,
+    'medium': 500,
+    'semi': 600,
+    'bold': 700,
+    'extra': 800
+);
