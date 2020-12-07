@@ -32,8 +32,7 @@ gulp.task('scripts', function(){
         'app/js/payment.js',
         'app/js/promocode.js',
         'app/js/calculator.js',
-        'app/js/calculator-quantity.js',
-        'app/js/custom.js'
+        'app/js/calculator-quantity.js'
     ])
     .pipe(babel({
         presets: ['@babel/preset-env']
