@@ -97,7 +97,10 @@
                 smallBasketModule.updateSmallBasketQuantity(storageModule.getProductQuantity());
                 basketModule.renderBasketProducts(storageModule.getStorageProducts());
                 // Показываем модальное окно
-                jQuery(`.success-basket`).modal();
+                jQuery(`.success-basket`).modal({
+                    fadeDuration: FADE_DURATION,
+                    fadeDelay: FADE_DELAY
+                });
             }
         }
     
@@ -236,7 +239,7 @@
         }
     
         updateCalculatorProductQuantity(value) {
-            this._calculatorProductQuanity = value;
+            this._calculatorProductQuanity = +value;
             this._el.querySelector(`.quantity__input`).value = this._calculatorProductQuanity;
         }
     

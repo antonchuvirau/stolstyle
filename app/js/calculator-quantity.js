@@ -19,12 +19,12 @@
 
             if (target.matches(`button`)) {
                 const buttonActionValue = target.dataset.action;
-                const calculatorProductPrice = +calculatorModule.getCalculatorProductPrice();
+                const calculatorProductPrice = calculatorModule.getCalculatorProductPrice();
 
                 // Получаем текущее значение количества товара
-                this._calculatorProductQuantity = +calculatorModule.getCalculatorProductQuantity();
+                this._calculatorProductQuantity = calculatorModule.getCalculatorProductQuantity();
                 // Вычисляем цену за один товар
-                const productPriceForOneItem = (calculatorProductPrice / this._calculatorProductQuantity).toFixed(1);
+                const productPriceForOneItem = +(calculatorProductPrice / this._calculatorProductQuantity).toFixed(1);
                 
                 switch (buttonActionValue) {
                     case `add`:

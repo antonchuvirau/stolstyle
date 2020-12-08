@@ -19,6 +19,7 @@ const customCarouselElementsCollection = document.querySelectorAll(`.custom-caro
 const basketForm = document.querySelector(`.basket-form`);
 const mobileMenuElement = document.querySelector(`.mobile-menu`);
 const calculatorContainer = document.querySelector(`.calculation`);
+const callBackModalButton = document.querySelector(`.modal__form-button`);
 
 
 // Константы
@@ -106,6 +107,8 @@ const PAYMENT_DATA = [
 ];
 const OFFSET_Y_STEP = 5;
 const TIMEOUT = 300;
+const FADE_DURATION = 250;
+const FADE_DELAY = .5;
 
 // Опции слайдеров
 const aboutCarouselSwiperOptions = {
@@ -351,6 +354,10 @@ function onCalculatorContainerClickHandler(evt) {
             .catch(error => console.log(new Error(error)));
     }
 }
+function onCallBackModalButtonClickHandler() {
+    callBackModalButton.textContent = `Отправляем...`;
+    callBackModalButton.classList.add(`form__button_state-in-progress`);
+}
 
 // Ивенты
 document.addEventListener(`DOMContentLoaded`, () => {
@@ -365,7 +372,10 @@ document.addEventListener(`DOMContentLoaded`, () => {
     new Swiper(productCarouselContainer, productCarouselSwiperOptions);
 
     jQuery('[data-modal]').on(`click`, function () {
-        jQuery(jQuery(this).data(`modal`)).modal();
+        jQuery(jQuery(this).data(`modal`)).modal({
+            fadeDuration: FADE_DURATION,
+            fadeDelay: FADE_DELAY
+        });
         return false;
     });
 
@@ -383,7 +393,10 @@ document.addEventListener(`DOMContentLoaded`, () => {
     if (successModalOpenLink) {
         successModalOpenLink.addEventListener(`click`, () => {
             jQuery.modal.close();
-            jQuery(`.basket`).modal();
+            jQuery(`.basket`).modal({
+                fadeDuration: FADE_DURATION,
+                fadeDelay: FADE_DELAY
+            });
         });
     }
     if (mobileMenuOpenButton) {
@@ -391,6 +404,9 @@ document.addEventListener(`DOMContentLoaded`, () => {
     }
     if (calculatorContainer) {
         calculatorContainer.addEventListener(`click`, onCalculatorContainerClickHandler);
+    }
+    if (callBackModalButton) {
+        callBackModalButton.addEventListener(`click`, onCallBackModalButtonClickHandler);
     }
     mobileMenuElement.addEventListener(`click`, onMobileMenuElementClickHandler);
     basketForm.addEventListener(`click`, onBasketFormClickHandler);
@@ -403,12 +419,17 @@ document.addEventListener('wpcf7mailsent', function (evt) {
         jQuery.modal.close();
         // Google conversion
         dataLayer.push({'event': 'callback'});
-        jQuery('.success-callback').modal();
+        setTimeout(function() {
+            jQuery('.success-callback').modal({
+                fadeDuration: FADE_DURATION,
+                fadeDelay: FADE_DELAY
+            });
+        }, TIMEOUT);
     }
 }, false);
 document.addEventListener('wpcf7invalid', function () {
     setTimeout(function () {
-        jQuery('.current button[type="submit"]').text(buttonTextContent);
+        jQuery('.current button[type="submit"]').text(`Заказать звонок`);
         jQuery('.current button[type="submit"]').removeClass('form__button_state-in-progress');
     }, 300);
 }, false);

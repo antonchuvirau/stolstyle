@@ -42,6 +42,12 @@
             background: $light-color;
             border-color: $light-color;
         }
+        &.wpcf7-not-valid {
+            border-color: $error-color;
+            & + span.wpcf7-not-valid-tip {
+                display: block;
+            }
+        }
         &.error {
             border-color: $error-color;
             & + span.wpcf7-not-valid-tip {

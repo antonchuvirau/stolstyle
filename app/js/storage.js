@@ -107,8 +107,8 @@
             const product = this._storageData.products.find(storageDataProduct => storageDataProduct.id === productId);
             const productIndex = this._storageData.products.findIndex(storageDataProduct => storageDataProduct.id === productId);
             // Обновляем данные товара
-            product.quantity = +newProductQuantity;
-            product.price = +newProductPrice;
+            product.quantity = newProductQuantity;
+            product.price = newProductPrice;
             // Вставляем обновленный товар обратно
             this._storageData.products.splice(productIndex, 1, product);
             // Обновляем дату

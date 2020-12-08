@@ -157,7 +157,10 @@
                                 // Закрываем модальное окно корзины
                                 jQuery.modal.close();
                                 // Показываем модальное окно успешного заказа
-                                jQuery(`.success-order`).modal();
+                                jQuery(`.success-order`).modal({
+                                    fadeDuration: FADE_DURATION,
+                                    fadeDelay: FADE_DELAY
+                                });
                             }.bind(this), 300);
                         } else {
                             this.updateBasketOrderData(`action`, `online`);
@@ -224,7 +227,7 @@
                 const productQuantityAction = target.dataset.action;
                 let productQuantityValue = +productQuantityInputElement.value;
                 let productPriceValue = parseFloat(productPriceElement.textContent);
-                const productPriceForOneItem = (productPriceValue / productQuantityValue).toFixed(1);
+                const productPriceForOneItem = productPriceValue / productQuantityValue;
 
                 if (productQuantityAction === `add`) {
                     productQuantityValue++;
@@ -236,7 +239,7 @@
                     productQuantityValue--;
                 }
 
-                productPriceValue = (productPriceForOneItem * productQuantityValue).toFixed(1);
+                productPriceValue = +(productPriceForOneItem * productQuantityValue).toFixed(1);
                 // Обновляем данные хранилища
                 storageModule.updateStorageProduct(productId, productQuantityValue, productPriceValue);
                 // Рендерим товары снова
@@ -317,23 +320,19 @@
 
         calculateBasketProductsPrice(productsData) {
             // Скидываем значение до ноля
-            this._basketProductsPrice = 0;
-            // Создаем промежуточную перменную
-            let basketProductsPrice = 0;
+            let basketProductsTotalPrice = 0;
 
             productsData.forEach(productData => {
-                basketProductsPrice += productData.price;
+                basketProductsTotalPrice += productData.price;
             });
-            this._basketProductsPrice = +basketProductsPrice.toFixed(1);
+            this._basketProductsPrice = +(basketProductsTotalPrice).toFixed(1);
             this.showBasketProductsPrice();
         }
 
         calculateBasketTotalPrice(isPromocode = this._isPromocode, promocodeValue = this._promocodeValue) {
-            let basketTotalPrice = this._basketProductsPrice + this._basketDeliveryData.price;
-            this._basketTotalPrice = +basketTotalPrice.toFixed(1);
+            this._basketTotalPrice = this._basketProductsPrice + this._basketDeliveryData.price;
             if (isPromocode) {
-                let totalPriceWithSale = (this._basketProductsPrice + this._basketDeliveryData.price) - ((this._basketProductsPrice + this._basketDeliveryData.price) * (+promocodeValue / 100));
-                this._basketTotalPriceWithSale = +totalPriceWithSale.toFixed(1);
+                this._basketTotalPriceWithSale = +((this._basketProductsPrice + this._basketDeliveryData.price) - ((this._basketProductsPrice + this._basketDeliveryData.price) * (+promocodeValue / 100))).toFixed(1);
                 this.showBasketTotalPrice(true);
             }
             else {
