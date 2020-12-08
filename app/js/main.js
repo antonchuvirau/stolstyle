@@ -328,7 +328,7 @@ function onCalculatorContainerClickHandler(evt) {
         const request = globalUtils.makeAjaxRequest(formData);
 
         request
-            .then(resp => resp.text())
+            .then(resp => resp.json())
             .then(data => {
                 console.log(data);
             })
