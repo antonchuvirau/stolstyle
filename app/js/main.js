@@ -20,6 +20,7 @@ const basketForm = document.querySelector(`.basket-form`);
 const mobileMenuElement = document.querySelector(`.mobile-menu`);
 const calculatorContainer = document.querySelector(`.calculation`);
 const callBackModalButton = document.querySelector(`.modal__form-button`);
+const telInputElements = document.querySelectorAll(`input[type="tel"]`);
 
 
 // Константы
@@ -358,9 +359,23 @@ function onCallBackModalButtonClickHandler() {
     callBackModalButton.textContent = `Отправляем...`;
     callBackModalButton.classList.add(`form__button_state-in-progress`);
 }
+function addInputMask() {
+    for (const telInputElement of telInputElements) {
+        if (telInputElement) {
+            const telInputMaskInstance = new Inputmask("+375 (99) 999-99-99", {
+                showMaskOnFocus: false,
+                showMaskOnHover: false,
+                clearMaskOnLostFocus: false
+            });
+        
+            telInputMaskInstance.mask(telInputElement);
+        }
+    }
+}
 
 // Ивенты
 document.addEventListener(`DOMContentLoaded`, () => {
+    addInputMask();
     changeLayout();
     // Карусель о продукте
     new Swiper(aboutCarouselContainer, aboutCarouselSwiperOptions);
@@ -435,18 +450,4 @@ document.addEventListener('wpcf7invalid', function () {
 }, false);
 window.addEventListener(`resize`, () => {
     changeLayout();
-});
-jQuery(`.modal`).on(`modal:open`, function() {
-    const currentModalElement = document.querySelector(`.jquery-modal.current`);
-    const telInputElement = currentModalElement.querySelector(`input[type="tel"]`);
-
-    if (telInputElement) {
-        const telInputMaskInstance = new Inputmask("+375 (99) 999-99-99", {
-            showMaskOnFocus: false,
-            showMaskOnHover: false,
-            clearMaskOnLostFocus: false
-        });
-    
-        telInputMaskInstance.mask(telInputElement);
-    }
 });
