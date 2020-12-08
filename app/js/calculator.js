@@ -64,6 +64,9 @@
                 if (productNote) {
                     productNote.classList.remove(`calculation-form__section-note_hidden`);
                 }
+                else {
+                    productNote.classList.add(`calculation-form__section-note_hidden`);
+                }
             }
             if (target.matches(`input[type="radio"][name*="cover-"]`)) {
                 const targetAttrName = target.getAttribute(`name`);
