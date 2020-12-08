@@ -330,7 +330,23 @@ function onCalculatorContainerClickHandler(evt) {
         request
             .then(resp => resp.json())
             .then(data => {
-                console.log(data);
+                if (data) {
+                    const contentModalContainer = document.querySelector(`.modal-content`);
+                    const contentModalFragment = document.createDocumentFragment();
+                    const contentModalTemplate = document.querySelector(`#modal`).content;
+                    // Клонируем контент шаблона
+                    const clonedContentModalTemplate = contentModalTemplate.cloneNode(true);
+
+                    clonedContentModalTemplate.querySelector(`.modal-content__title`).textContent = data.title;
+                    clonedContentModalTemplate.querySelector(`.modal-content__text`).insertAdjacentHTML(`afterbegin`, data.content);
+                    contentModalFragment.appendChild(clonedContentModalTemplate);
+                    // Очищаем модальное окно
+                    contentModalContainer.innerHTML = ``;
+                    // Добавляем контент
+                    contentModalContainer.appendChild(contentModalFragment);
+                    // Показываем модальное окно
+                    jQuery(`#modal-content`).modal();
+                }
             })
             .catch(error => console.log(new Error(error)));
     }
