@@ -169,7 +169,7 @@
                             basketPaymentFormRequest
                                 .then(resp => resp.text())
                                 .then(data => {
-                                    formSubmitButton.textContent = `Перенаправляем на оплату...`;
+                                    formSubmitButton.textContent = `Идём на оплату...`;
                                     setTimeout(function () {
                                         // Получаем форму оплаты
                                         const basketPaymentForm = data;
@@ -185,7 +185,7 @@
                                 })
                                 .catch(() => {
                                     setTimeout(function () {
-                                        formSubmitButton.textContent = `Упс. Неизвестная ошибка...`;
+                                        formSubmitButton.textContent = `Упс. Ошибка...`;
                                     }, 300);
                                 });
                         }
@@ -193,7 +193,7 @@
                 })
                 .catch(() => {
                     setTimeout(function () {
-                        formSubmitButton.textContent = `Упс. Неизвестная ошибка...`;
+                        formSubmitButton.textContent = `Упс. Ошибка...`;
                     }, 300);
                 });
         }

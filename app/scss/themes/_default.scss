@@ -2461,6 +2461,50 @@
             }
         }
     }
+    .products-list {
+        &__item {
+            &-price {
+                position: absolute;
+                top: 15px;
+                right: 30px;
+            }
+            &-remove-button {
+                position: absolute;
+                top: 15px;
+                right: 0;
+            }
+        }
+    }
+    .form {
+        &__select {
+            & select {
+                display: block;
+                width: 100%;
+                max-width: 100%;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                padding-right: 40px;
+            }
+        }
+    }
+    .total {
+        &__item {
+            &-name {
+                &_bigger {
+                    font-size: 2.3rem;
+                }
+            }
+            &-value {
+                &_bigger {
+                    font-size: 2.3rem;
+                    & span {
+                        font-size: 2rem;
+                    }
+                }
+            }
+        }
+    }
 }
 
 @media screen and (min-width: 992px) and (max-width: 1199px) {

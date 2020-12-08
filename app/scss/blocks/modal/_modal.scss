@@ -62,3 +62,49 @@
         }
     }
 }
+
+.modal-content {
+    &__title {
+        margin-bottom: 30px;
+    }
+    &__text {
+        & p, a, li {
+            font-size: 1.6rem;
+            line-height: 1.45;
+            color: #787878;
+        }
+        & p, ol, ul {
+            margin: 0;
+            margin-bottom: 20px;
+        }
+        & ul, ol {
+            padding-left: 20px;
+        }
+        & a {
+            color: #8b71b5;
+        }
+        & p {
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+        & h2, h3, h4, h5, h6 {
+            margin: 0;
+        }
+        & h2 {
+            font-size: 3rem;
+			margin-bottom: 30px;
+        }
+        & h3 {
+            font-size: 2.5rem;
+			margin-bottom: 25px;
+        }
+        & img {
+            display: block;
+            margin: 20px auto;
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+}
