@@ -27,10 +27,10 @@
     }
 
     function makeAjaxRequest(requestData) {
-        return jQuery.ajax({
-            url: ajax.url,
-            type: 'POST',
-            data: requestData
+        return fetch(ajax.url, {
+            method: "POST",
+            credentials: "same-origin",
+            body: requestData
         });
     }
 

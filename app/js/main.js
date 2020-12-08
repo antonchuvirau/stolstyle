@@ -1,5 +1,8 @@
 'use strict';
 
+// Модули
+const globalUtils = window.globalUtils;
+
 // Глобальные переменные
 let isCompleted = false;
 let customCarouselCollection = [];
@@ -15,6 +18,7 @@ const mobileMenuOpenButton = document.querySelector(`.menu-btn`);
 const customCarouselElementsCollection = document.querySelectorAll(`.custom-carousel`);
 const basketForm = document.querySelector(`.basket-form`);
 const mobileMenuElement = document.querySelector(`.mobile-menu`);
+const calculatorContainer = document.querySelector(`.calculation`);
 
 
 // Константы
@@ -313,6 +317,24 @@ function onBasketFormClickHandler(evt) {
         target.nextElementSibling.classList.toggle(`form__row_state-disabled`);
     }
 }
+function onCalculatorContainerClickHandler(evt) {
+    const target = evt.target;
+
+    if (target.matches(`.calculation-form__section-note`)) {
+        const postId = target.dataset.postId;
+        const formData = new FormData();
+        formData.set(`action`, `content`);
+        formData.set(`post_id`, postId);
+        const request = globalUtils.makeAjaxRequest(formData);
+
+        request
+            .then(resp => resp.text())
+            .then(data => {
+                console.log(data);
+            })
+            .catch(error => console.log(new Error(error)));
+    }
+}
 
 // Ивенты
 document.addEventListener(`DOMContentLoaded`, () => {
@@ -350,6 +372,9 @@ document.addEventListener(`DOMContentLoaded`, () => {
     }
     if (mobileMenuOpenButton) {
         mobileMenuOpenButton.addEventListener(`click`, onMobileMenuOpenButtonClickHandler);
+    }
+    if (calculatorContainer) {
+        calculatorContainer.addEventListener(`click`, onCalculatorContainerClickHandler);
     }
     mobileMenuElement.addEventListener(`click`, onMobileMenuElementClickHandler);
     basketForm.addEventListener(`click`, onBasketFormClickHandler);
