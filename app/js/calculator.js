@@ -60,12 +60,11 @@
                     }
                 }
                 // Показываем подсказку
-                const productNote = this._el.querySelector(`.calculation-form__section-note[data-product-index="${this._calculatorProductIndex}"`);
-                if (productNote) {
-                    productNote.classList.remove(`calculation-form__section-note_hidden`);
+                if (this._calculatorProductIndex === 1) {
+                    this._el.querySelector(`.calculation-form__section-note[data-modal="#tablecloth-size"`).classList.remove(`calculation-form__section-note_hidden`);
                 }
                 else {
-                    productNote.classList.add(`calculation-form__section-note_hidden`);
+                    this._el.querySelector(`.calculation-form__section-note[data-modal="#tablecloth-size"`).classList.add(`calculation-form__section-note_hidden`);
                 }
             }
             if (target.matches(`input[type="radio"][name*="cover-"]`)) {
