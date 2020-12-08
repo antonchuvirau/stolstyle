@@ -320,24 +320,28 @@
 
         calculateBasketProductsPrice(productsData) {
             // Скидываем значение до ноля
-            let basketProductsTotalPrice = 0;
+            let basketProductsPrice = 0;
 
             productsData.forEach(productData => {
-                basketProductsTotalPrice += productData.price;
+                basketProductsPrice += +productData.price;
             });
-            this._basketProductsPrice = +(basketProductsTotalPrice).toFixed(1);
+            this.updateBasketProductsPrice(basketProductsPrice);
             this.showBasketProductsPrice();
         }
 
         calculateBasketTotalPrice(isPromocode = this._isPromocode, promocodeValue = this._promocodeValue) {
-            this._basketTotalPrice = this._basketProductsPrice + this._basketDeliveryData.price;
+            const basketTotalPrice = this._basketProductsPrice + this._basketDeliveryData.price;
+            // Обновляем полную стоимость
+            this.updateBasketTotalPrice(basketTotalPrice);
+            // Проверяем на наличие промокода
             if (isPromocode) {
-                this._basketTotalPriceWithSale = +((this._basketProductsPrice + this._basketDeliveryData.price) - ((this._basketProductsPrice + this._basketDeliveryData.price) * (+promocodeValue / 100))).toFixed(1);
+                const basketTotalPriceWithSale = +((this._basketProductsPrice + this._basketDeliveryData.price) - ((this._basketProductsPrice + this._basketDeliveryData.price) * (+promocodeValue / 100))).toFixed(1);
+                // Обновляем полную стоимость с промокодом
+                this.updateBasketTotalPriceWithSale(basketTotalPriceWithSale);
                 this.showBasketTotalPrice(true);
+                return;
             }
-            else {
-                this.showBasketTotalPrice();
-            }
+            this.showBasketTotalPrice();
         }
 
         updateBasketDeliveryData(deliveryId) {
@@ -378,6 +382,18 @@
             this._promocodeName = promocodeName;
 
             this.calculateBasketTotalPrice();
+        }
+
+        updateBasketTotalPrice(value) {
+            this._basketTotalPrice = +value.toFixed(1);
+        }
+
+        updateBasketTotalPriceWithSale(value) {
+            this._basketTotalPriceWithSale = +value.toFixed(1);
+        }
+
+        updateBasketProductsPrice(value) {
+            this._basketProductsPrice = +value.toFixed(1);
         }
     }
 
