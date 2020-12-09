@@ -190,8 +190,7 @@ function onCallButtonElementClickHandler() {
     callButtonElement.closest('.call-link').querySelector('.call-link__dropdown').classList.toggle('call-link__dropdown_state-opened');
 }
 function onWindowScrollHandler(evt) {
-    const target = evt.target;
-    const targetOffsetY = target.pageYOffset;
+    const targetOffsetY = window.pageYOffset;
 
     if (targetOffsetY > OFFSET_Y_STEP) {
         headerElement.classList.add('header_position-sticky');
