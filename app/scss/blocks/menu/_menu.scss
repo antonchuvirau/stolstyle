@@ -105,5 +105,8 @@
         &:active {
             color: $black-color;
         }
+        &_active {
+            color: $primary-color;
+        }
     }
 }

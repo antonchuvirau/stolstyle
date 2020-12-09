@@ -122,13 +122,15 @@
             if (this._isPromocode) {
                 this.updateBasketOrderData(`promocode_name`, this._promocodeName);
                 this.updateBasketOrderData(`promocode_value`, this._promocodeValue);
-                this.updateBasketOrderData(`promocode_price`, (this._basketTotalPrice - this._basketTotalPriceWithSale).toFixed(1));
+                this.updateBasketOrderData(`promocode_price`, (this._basketProductsPrice - this._basketProductsPriceWithSale).toFixed(1));
+                this.updateBasketOrderData(`products_price_with_sale`, this._basketProductsPriceWithSale);
                 this.updateBasketOrderData(`total_price_with_sale`, this._basketTotalPriceWithSale);
             }
             else {
                 this._basketOrderData.delete(`promocode_name`);
                 this._basketOrderData.delete(`promocode_price`);
                 this._basketOrderData.delete(`promocode_value`);
+                this._basketOrderData.delete(`products_price_with_sale`);
                 this._basketOrderData.delete(`total_price_with_sale`);
             }
             // Добавляем тип запроса
@@ -335,8 +337,10 @@
             this.updateBasketTotalPrice(basketTotalPrice);
             // Проверяем на наличие промокода
             if (isPromocode) {
-                const basketTotalPriceWithSale = +((this._basketProductsPrice + this._basketDeliveryData.price) - ((this._basketProductsPrice + this._basketDeliveryData.price) * (+promocodeValue / 100))).toFixed(1);
+                const basketProductsPriceWithSale = +(this._basketProductsPrice - (this._basketProductsPrice * (+promocodeValue / 100))).toFixed(1);
+                const basketTotalPriceWithSale = basketProductsPriceWithSale + this._basketDeliveryData.price;
                 // Обновляем полную стоимость с промокодом
+                this.updateBasketProductsPriceWithSale(basketProductsPriceWithSale);
                 this.updateBasketTotalPriceWithSale(basketTotalPriceWithSale);
                 this.showBasketTotalPrice(true);
                 return;
@@ -390,6 +394,10 @@
 
         updateBasketTotalPriceWithSale(value) {
             this._basketTotalPriceWithSale = +value.toFixed(1);
+        }
+
+        updateBasketProductsPriceWithSale(value) {
+            this._basketProductsPriceWithSale = +value.toFixed(1);
         }
 
         updateBasketProductsPrice(value) {

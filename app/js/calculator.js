@@ -59,13 +59,6 @@
                         }
                     }
                 }
-                // Показываем подсказку
-                if (this._calculatorProductIndex === 1) {
-                    this._el.querySelector(`.calculation-form__section-note[data-modal="#tablecloth-size"`).classList.remove(`calculation-form__section-note_hidden`);
-                }
-                else {
-                    this._el.querySelector(`.calculation-form__section-note[data-modal="#tablecloth-size"`).classList.add(`calculation-form__section-note_hidden`);
-                }
             }
             if (target.matches(`input[type="radio"][name*="cover-"]`)) {
                 const targetAttrName = target.getAttribute(`name`);
