@@ -33,6 +33,12 @@
             box-shadow: 0 0 5px 0 rgba($primary-color,.2);
         }
     }
+    &__menu {
+        padding-left: 50px;
+    }
+    &__wrapper {
+        @include flex(row, center, flex-end);
+    }
 }
 
 .admin-bar {
