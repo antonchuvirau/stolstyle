@@ -189,7 +189,7 @@ function onCallButtonElementClickHandler() {
     callButtonElement.closest('.call-link').classList.toggle('call-link_state-actived');
     callButtonElement.closest('.call-link').querySelector('.call-link__dropdown').classList.toggle('call-link__dropdown_state-opened');
 }
-function onWindowScrollHandler(evt) {
+function onWindowScrollHandler() {
     const targetOffsetY = window.pageYOffset;
 
     if (targetOffsetY > OFFSET_Y_STEP) {
