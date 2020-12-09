@@ -1505,7 +1505,7 @@
         background: $primary-color-lightest;
         border-radius: 5px;
         transform: translate3d(50%,3px,0);
-        transition: transform .15s ease-in-out;
+        transition: opacity .2s linear, transform .15s ease-in-out;
         z-index: 5;
         &_state {
             &-opened {

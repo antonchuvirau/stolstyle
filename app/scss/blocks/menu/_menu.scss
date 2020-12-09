@@ -21,5 +21,9 @@
         &:active {
             color: $black-color;
         }
+        &_active {
+            pointer-events: none;
+            color: $primary-color;
+        }
     }
 }
