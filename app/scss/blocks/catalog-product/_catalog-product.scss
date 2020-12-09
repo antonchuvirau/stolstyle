@@ -1,4 +1,5 @@
 .catalog-product {
+    @include flex(column);
     position: relative;
     &__label {
         display: inline-block;
@@ -35,6 +36,7 @@
     }
     &__desc {
         margin-top: 10px;
+        margin-bottom: 20px;
         & ul {
             list-style-type: none;
             padding: 0;
@@ -47,7 +49,7 @@
     }
     &__footer {
         @include flex(row, center);
-        margin-top: 20px;
+        margin-top: auto;
     }
     &__price {
         font-size: 2.4rem;
