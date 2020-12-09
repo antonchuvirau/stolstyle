@@ -993,6 +993,12 @@
     &__carousel {
         position: relative;
         margin: 50px 0;
+        &:first-child {
+            margin-top: 0;
+        }
+        &:last-child {
+            margin-bottom: 0;
+        }
 
         & figure {
             padding: 0;
@@ -1035,7 +1041,19 @@
         }
     }
 }
-
+.catalog-template {
+    &__grid {
+        margin-top: 30px;
+        padding: 10px 0;
+        padding-bottom: 130px;
+    }
+    &__sidebar {
+        margin-top: 25px;
+    }
+    &__text {
+        margin-top: 100px;
+    }
+}
 .product-template {
     &__breadcrumbs {
         margin-bottom: 30px;

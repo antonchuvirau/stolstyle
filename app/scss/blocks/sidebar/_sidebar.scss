@@ -1,0 +1,24 @@
+.sidebar {
+    @include flex(column);
+    &__title {
+        margin: 0;
+        font-size: 2.4rem;
+        @include font-weight('bold');
+        letter-spacing: -0.02em;
+        margin-bottom: 25px;
+    }
+    &__link {
+        text-decoration: none;
+        padding: 10px 15px;
+        border: 2px solid transparent;
+        border-radius: 5px;
+        color: $black-color;
+        margin-bottom: 10px;
+        &:last-child {
+            margin-bottom: 0;
+        }
+        &_active {
+            border-color: $black-color;
+        }
+    }
+}

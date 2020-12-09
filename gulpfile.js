@@ -22,7 +22,7 @@ gulp.task('styles', function(){
 gulp.task('scripts', function(){
     return gulp.src([
         'app/js/plugins.js',
-        'app/js/main.js',
+        'app/js/init.js',
         'app/js/utils.js',
         'app/js/storage.js',
         'app/js/small-basket.js',
@@ -32,7 +32,8 @@ gulp.task('scripts', function(){
         'app/js/payment.js',
         'app/js/promocode.js',
         'app/js/calculator.js',
-        'app/js/calculator-quantity.js'
+        'app/js/calculator-quantity.js',
+        'app/js/main.js'
     ])
     .pipe(babel({
         presets: ['@babel/preset-env']
