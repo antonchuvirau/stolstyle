@@ -10,11 +10,30 @@
         &:last-child {
             margin-right: 0;
         }
+        &.has-children {
+            & > .menu {
+                &__link {
+                    position: relative;
+                    padding-right: 15px;
+                    &::after {
+                        content: '';
+                        position: absolute;
+                        width: 10px;
+                        height: 10px;
+                        background: icon('arrow-down.svg') no-repeat 50% / 10px auto;
+                        top: 50%;
+                        margin-top: -4px;
+                        right: 0;
+                    }
+                }
+            }
+        }
     }
     &__link {
         text-decoration: none;
         line-height: 1.56;
         color: $gray-color;
+        cursor: pointer;
         &:hover {
             color: darken($gray-color, 20%);
         }
@@ -26,4 +45,10 @@
             color: $primary-color;
         }
     }
+}
+
+.sub-menu {
+    pointer-events: none;
+    opacity: 0;
+    position: absolute;
 }
