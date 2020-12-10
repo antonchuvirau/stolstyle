@@ -1,11 +1,11 @@
 .button {
-    line-height: 1.56;
-    @include flex(row, center, center);
+    display: inline-block;
     background: $primary-color;
     color: $white-color;
     text-decoration: none;
     border-radius: 5px;
     height: 40px;
+    line-height: 38px;
     padding: 0 15px;
     &_size {
         &-l {
@@ -13,12 +13,13 @@
             padding: 0 30px;
             font-size: 2.4rem;
             @include font-weight('bold');
-            letter-spacing: -.02em;
+            line-height: 58px;
         }
     }
     & svg {
         flex-shrink: 0;
         margin-right: 5px;
+        vertical-align: sub;
     }
     &:hover {
         background: $primary-color-darker;

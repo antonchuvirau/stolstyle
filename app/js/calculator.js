@@ -59,6 +59,18 @@
                         }
                     }
                 }
+
+                // Отключаем отображение типа стола для скатерти
+                if (this._calculatorProductIndex === 1) {
+                    this._el.querySelector(`.calculation-form__section:nth-child(2)`).classList.add(`calculation-form__section_hidden`);
+                    this._el.querySelector(`.calculation-form__section:nth-child(3)`).classList.add(`calculation-form__section_hidden`);
+                    this._el.querySelector(`.calculation-form__section-note`).classList.remove(`calculation-form__section-note_hidden`);
+                }
+                else {
+                    this._el.querySelector(`.calculation-form__section:nth-child(2)`).classList.remove(`calculation-form__section_hidden`);
+                    this._el.querySelector(`.calculation-form__section:nth-child(3)`).classList.remove(`calculation-form__section_hidden`);
+                    this._el.querySelector(`.calculation-form__section-note`).classList.add(`calculation-form__section-note_hidden`);
+                }
             }
             if (target.matches(`input[type="radio"][name*="cover-"]`)) {
                 const targetAttrName = target.getAttribute(`name`);

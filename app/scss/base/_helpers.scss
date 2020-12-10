@@ -5,12 +5,12 @@
     margin: 0;
     letter-spacing: -.03em;
     font-size: 5.4rem;
-    line-height: 1.11;
+    line-height: 1;
     @include font-weight('extra');
     &_size {
         &-l {
             font-size: 7.8rem;
-            line-height: .89;
+            line-height: .9;
         }
         &-s {
             font-size: 3.2rem;

@@ -8,5 +8,8 @@
             opacity: .5;
             cursor: not-allowed;
         }
+        & svg {
+            max-width: 30px;
+        }
     }
 }

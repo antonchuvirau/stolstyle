@@ -32,7 +32,7 @@
         & p, a, li {
             font-size: 1.6rem;
             line-height: 1.45;
-            color: #787878;
+            color: $black-color;
         }
         & p, ol, ul {
             margin: 0;
@@ -42,7 +42,7 @@
             padding-left: 20px;
         }
         & a {
-            color: #8b71b5;
+            color: $primary-color;
         }
         & p {
             &:last-child {
@@ -64,6 +64,7 @@
 }
 
 .modal-content {
+    max-width: 700px;
     &__title {
         margin-bottom: 30px;
     }
@@ -71,7 +72,7 @@
         & p, a, li {
             font-size: 1.6rem;
             line-height: 1.45;
-            color: #787878;
+            color: $black-color;
         }
         & p, ol, ul {
             margin: 0;
@@ -80,8 +81,23 @@
         & ul, ol {
             padding-left: 20px;
         }
+        & ul {
+            list-style-type: none;
+            padding: 0;
+            & li {
+                position: relative;
+                padding-left: 10px;
+                &::before {
+                    content: '-';
+                    position: absolute;
+                    top: 3px;
+                    left: 0;
+                    line-height: 1;
+                }
+            }
+        }
         & a {
-            color: #8b71b5;
+            color: $primary-color;
         }
         & p {
             &:last-child {
