@@ -1,0 +1,33 @@
+.product-gallery {
+    &__thumbs {
+        @include flex(row, stretch);
+        margin-top: 30px;
+        &-item {
+            position: relative;
+            width: 100px;
+            height: 75px;
+            margin-right: 10px;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: 50%;
+            &::before {
+                content: '';
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                border: 4px solid transparent;
+                top: 0;
+                left: 0;
+                pointer-events: none;
+            }
+            &:last-child {
+                margin-right: 0;
+            }
+            &_active {
+                &::before {
+                    border-color: $active;
+                }
+            }
+        }
+    }
+}
