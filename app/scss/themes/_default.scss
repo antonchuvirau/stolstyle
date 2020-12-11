@@ -1068,10 +1068,11 @@
     }
 }
 .catalog-template {
+    padding-bottom: 0;
     &__grid {
         margin-top: 30px;
         padding: 10px 0;
-        padding-bottom: 130px;
+        padding-bottom: 0;
     }
     &__sidebar {
         margin-top: 25px;

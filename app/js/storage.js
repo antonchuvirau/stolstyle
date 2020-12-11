@@ -20,6 +20,11 @@
         }
 
         addProductToStorage(productData) {
+            // Проверяем существует ли такоей продукт в хранилище
+            if (this.findStorageProduct(productData)) {
+                this.updateStorageProductQuantity(productData);
+                return;
+            }
             // Обновляем данные хранилища
             this.updateStorageProducts(productData);
             // Обновляем дату
@@ -121,6 +126,26 @@
             this._storageData.date = ``;
             this._storageData.products  = [];
             this.updateProductQuantity(0);
+        }
+
+        updateStorageProductQuantity(productData) {
+            // Находим наш товар
+            const product = this._storageData.products.find(storageDataProduct => storageDataProduct.productId === productData.productId);
+            const productIndex = this._storageData.products.findIndex(storageDataProduct => storageDataProduct.productId === productData.productId);
+            const productPricePerOne = product.price / product.quantity;
+            // Обновляем данные товара
+            product.quantity += 1;
+            product.price = +(productPricePerOne * product.quantity).toFixed(1);
+            // Вставляем обновленный товар обратно
+            this._storageData.products.splice(productIndex, 1, product);
+            // Обновляем дату
+            this.createDate();
+            // Обновляем локальное хранилище
+            this.updateLocalStorage();
+        }
+
+        findStorageProduct(productData) {
+            return this._storageData.products.find(storageDataProduct => storageDataProduct.productId === productData.productId) ? true : false;
         }
     }
 
