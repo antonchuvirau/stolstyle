@@ -1141,25 +1141,12 @@
         margin-bottom: 45px;
     }
 }
-.catalog-product-template {
-    &__title {
-        margin-bottom: 25px;
-    }
-    &__breadcrumbs {
-        margin-bottom: 30px;
-    }
-    &__content {
-        @include flex(column);
-        padding-left: 35px;
-    }
-    &__label {
-        margin-bottom: 30px;
-    }
-    &__desc {
+.product {
+    &-desc {
         list-style-type: none;
         padding: 0;
         margin: 0;
-        &-item {
+        &__item {
             @include flex(row, baseline);
             margin-bottom: 10px;
             font-size: 1.8rem;
@@ -1193,23 +1180,18 @@
             }
         }
     }
-    &__button {
-        margin-top: 40px;
-    }
-    &__link {
+    &__instruction-link {
         text-decoration: none;
         font-size: 1.8rem;
         color: $primary-color;
         margin-top: 10px;
         line-height: 1.45;
         border-bottom: 1px solid rgba($primary-color, .5);
-        margin-top: 15px;
         &:hover {
             opacity: .8;
         }
     }
     &__text {
-        margin-top: 50px;
         & h2, h3, h4, h5, h6 {
             margin: 20px 0;
             letter-spacing: -0.03em;
@@ -1264,6 +1246,30 @@
                 }
             }
         }
+    }
+}
+.catalog-product-template {
+    &__title {
+        margin-bottom: 25px;
+    }
+    &__breadcrumbs {
+        margin-bottom: 30px;
+    }
+    &__content {
+        @include flex(column);
+        padding-left: 35px;
+    }
+    &__label {
+        margin-bottom: 40px;
+    }
+    &__button {
+        margin-top: 45px;
+    }
+    &__link {
+        margin-top: 15px;
+    }
+    &__text {
+        margin-top: 50px;
     }
 }
 .product-template {
@@ -1331,7 +1337,38 @@
         }
     }
 }
-
+.custom-page-template {
+    padding-bottom: 0;
+    &__breadcrumbs {
+        margin-bottom: 30px;
+    }
+    &__img {
+        position: absolute;
+        top: 0;
+        left: 50px;
+        width: 640px;
+        height: 815px;
+        border-radius: 5px;
+        z-index: 1;
+        & img {
+            display: block;
+            border-radius: 5px;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+    &__content {
+        @include flex(column);
+        padding-bottom: 135px;
+    }
+    &__desc {
+        margin-top: 40px;
+    }
+    &__button {
+        margin-top: 45px;
+    }
+}
 .product-carousel {
     position: relative;
 
