@@ -18,7 +18,7 @@ const mobileMenuElement = document.querySelector(`.mobile-menu`);
 const calculatorContainer = document.querySelector(`.calculation`);
 const callBackModalButton = document.querySelector(`.modal__form-button`);
 const telInputElements = document.querySelectorAll(`input[type="tel"]`);
-const catalogTemplateContainer = document.querySelector(`.catalog-template__grid`);
+const productGalleryContainer = document.querySelector(`.product-gallery__container`);
 
 
 // Константы
@@ -154,7 +154,7 @@ const articleCarouselSwiperOptions = {
         prevEl: '.template__carousel-arrow-prev',
         nextEl: '.template__carousel-arrow-next'
     }
-}
+};
 const productCarouselSwiperOptions = {
     slidesPerView: 'auto',
     spaceBetween: 30,
@@ -171,7 +171,13 @@ const productCarouselSwiperOptions = {
         prevEl: '.product-carousel__arrow-prev',
         nextEl: '.product-carousel__arrow-next'
     }
-}
+};
+const productGalleryOptions = {
+    effect: 'fade',
+    fadeEffect: {
+        crossFade: true
+    }
+};
 
 // Функции
 function onCallButtonElementClickHandler() {
@@ -199,6 +205,9 @@ function onDocumentClickHandler(evt) {
         }
         target.closest('.form').querySelector('button[type="submit"]').setAttribute('disabled', true);
     }
+    if (target.matches(`.add-to-basket`)) {
+        onAddToBasketClickHandler(target);
+    }
 }
 
 function onMobileMenuOpenButtonClickHandler(evt) {
@@ -213,9 +222,6 @@ function onMobileMenuOpenButtonClickHandler(evt) {
 
 function changeLayout() {
     if (window.innerWidth < 992 && !isCompleted) {
-        if (document.querySelector('.hero__desc')) {
-            document.querySelector('.hero__desc').after(document.querySelector('.hero__benefits'));
-        }
         if (document.querySelector('.product-template__img')) {
             document.querySelector('.product-template__img').before(document.querySelector('.product-template__grid').querySelector('.template__title'));
         }
@@ -223,9 +229,6 @@ function changeLayout() {
         isCompleted = !isCompleted;
     }
     if (window.innerWidth > 991 && isCompleted) {
-        if (document.querySelector('.hero__button')) {
-            document.querySelector('.hero__button').after(document.querySelector('.hero__benefits'));
-        }
         if (document.querySelector('.product-template__img')) {
             document.querySelector('.product-template__grid').querySelector('.product-template__info').prepend(document.querySelector('.template__title'));
         }
@@ -251,7 +254,7 @@ function createCustomCarousel() {
             item.innerHTML = `<div class="swiper-wrapper"></div>`;
             item.querySelector('.swiper-wrapper').innerHTML = itemChildrenHTML;
             //Init carousel
-            let instance = new Swiper(item, {
+            const instance = new Swiper(item, {
                 slidesPerView: 1,
                 loop: true,
                 pagination: {
@@ -371,33 +374,29 @@ function addInputMask() {
     }
 }
 
-function onCatalogTemplateContainerClickHandler(evt) {
-    const target = evt.target;
+function onAddToBasketClickHandler(target) {
+    const postId = target.dataset.postId;
+    const formData = new FormData();
+    formData.set(`action`, `product`);
+    formData.set(`post_id`, postId);
+    const request = utilsModule.makeAjaxRequest(formData);
 
-    if (target.matches(`.catalog-product__form-button`)) {
-        const postId = target.dataset.postId;
-        const formData = new FormData();
-        formData.set(`action`, `product`);
-        formData.set(`post_id`, postId);
-        const request = utilsModule.makeAjaxRequest(formData);
-
-        request
-            .then(resp => resp.json())
-            .then(data => {
-                // Формируем id продукта
-                const now = new Date();
-                data.id = +now.getTime();
-                // Добавляем продукт в хранилище
-                storageModule.addProductToStorage(data);
-                // Обновляем корзину
-                smallBasketModule.updateSmallBasketQuantity(storageModule.getProductQuantity());
-                basketModule.renderBasketProducts(storageModule.getStorageProducts());
-                // Показываем модальное окно
-                jQuery(`.success-basket`).modal({
-                    fadeDuration: FADE_DURATION,
-                    fadeDelay: FADE_DELAY
-                });
-            })
-            .catch(error => console.log(new Error(error)));
-    }
+    request
+        .then(resp => resp.json())
+        .then(data => {
+            // Формируем id продукта
+            const now = new Date();
+            data.id = +now.getTime();
+            // Добавляем продукт в хранилище
+            storageModule.addProductToStorage(data);
+            // Обновляем корзину
+            smallBasketModule.updateSmallBasketQuantity(storageModule.getProductQuantity());
+            basketModule.renderBasketProducts(storageModule.getStorageProducts());
+            // Показываем модальное окно
+            jQuery(`.success-basket`).modal({
+                fadeDuration: FADE_DURATION,
+                fadeDelay: FADE_DELAY
+            });
+        })
+        .catch(error => console.log(new Error(error)));
 }

@@ -2,17 +2,10 @@
     @include flex(column);
     position: relative;
     &__label {
-        display: inline-block;
         position: absolute;
         top: 0;
         left: 0;
-        font-size: 1.4rem;
-        padding: 3px 5px;
-        color: $white-color;
         z-index: 1;
-        &_0 {
-            background: map-get($labels, 0);
-        }
     }
     &__img {
         display: block;

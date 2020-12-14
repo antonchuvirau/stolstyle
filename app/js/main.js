@@ -56,8 +56,8 @@ document.addEventListener(`DOMContentLoaded`, () => {
     if (callBackModalButton) {
         callBackModalButton.addEventListener(`click`, onCallBackModalButtonClickHandler);
     }
-    if (catalogTemplateContainer) {
-        catalogTemplateContainer.addEventListener(`click`, onCatalogTemplateContainerClickHandler);
+    if (productGalleryContainer) {
+        new Swiper(productGalleryContainer, productGalleryOptions);
     }
     mobileMenuElement.addEventListener(`click`, onMobileMenuElementClickHandler);
     basketForm.addEventListener(`click`, onBasketFormClickHandler);
