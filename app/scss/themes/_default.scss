@@ -6,6 +6,11 @@
         margin-left: 5px;
     }
 }
+.logo {
+    &__img {
+        max-width: 160px;
+    }
+}
 .hero {
     padding: 80px 0;
     padding-bottom: 180px;
@@ -1899,7 +1904,7 @@
 }
 
 //Media
-@media screen and (max-width: 1199px) {
+@media screen and (max-width: 1229px) {
     .title {
         font-size: 4rem;
         line-height: 1.25;
@@ -1971,17 +1976,17 @@
 
 @media screen and (max-width: 991px) {
     .title {
-        font-size: 3.2rem;
+        font-size: 3.1rem;
         line-height: 1.25;
 
         &_size {
             &-l {
-                font-size: 5.4rem;
+                font-size: 5.3rem;
                 line-height: 1;
             }
 
             &-s {
-                font-size: 2.4rem;
+                font-size: 2.3rem;
                 line-height: 1.25;
             }
         }
@@ -2149,6 +2154,10 @@
 
         &__item {
             align-items: center;
+            &-icon {
+                max-width: 180px;
+                max-height: 180px;
+            }
         }
     }
     .footer {
@@ -2318,6 +2327,10 @@
 
             &-text {
                 text-align: center;
+            }
+            &-icon {
+                max-width: 160px;
+                max-height: 160px;
             }
         }
 
@@ -2787,7 +2800,7 @@
     }
 }
 
-@media screen and (min-width: 1200px) and (max-width: 1199px) {
+@media screen and (min-width: 992px) and (max-width: 1229px) {
     .footer {
         &__menu {
             &-col {
@@ -2829,7 +2842,7 @@
     }
 }
 
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1230px) {
     .header {
         &__options {
             &-button {

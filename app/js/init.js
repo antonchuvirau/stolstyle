@@ -2,7 +2,6 @@
 
 // Глобальные переменные
 let isCompleted = false;
-let customCarouselCollection = [];
 let submitButtonTextContent;
 const callButtonElement = document.querySelector(`.call-link__icon`);
 const aboutCarouselContainer = document.querySelector(`.about-carousel__grid`);
@@ -12,7 +11,6 @@ const productCarouselContainer = document.querySelector(`.product-carousel__cont
 const successModalOpenLink = document.querySelector(`.success__link`);
 const headerElement = document.querySelector(`.header`);
 const mobileMenuOpenButton = document.querySelector(`.menu-btn`);
-const customCarouselElementsCollection = document.querySelectorAll(`.custom-carousel`);
 const basketForm = document.querySelector(`.basket-form`);
 const mobileMenuElement = document.querySelector(`.mobile-menu`);
 const calculatorContainer = document.querySelector(`.calculation`);
@@ -238,59 +236,56 @@ function changeLayout() {
 }
 
 function createCustomCarousel() {
+    const carouselElements = Array.from(document.querySelectorAll('.custom-carousel'));
 
-    if (customCarouselElementsCollection.length) {
-        customCarouselElementsCollection.forEach((item, index) => {
-            item.classList.add('swiper-container');
-            item.classList.add('instance-' + index);
-            //Add class to children
-            for (const childInstance of item.children) {
-                childInstance.classList.add('swiper-slide');
+    if (carouselElements.length) {
+        carouselElements.forEach((carouselElement, index) => {
+            const parentContainer = carouselElement.closest(`.carousel__grid`);
+            const customCarouselWrapper = carouselElement.closest(`.carousel`);
+            const carouselDataFragment = document.createDocumentFragment();
+            const carouselClonedNode = carouselElement.cloneNode(true);
+            const childrenData = carouselClonedNode.querySelectorAll(`div[class*=col]`);
+            carouselClonedNode.classList.add(`swiper-container`, `swiper-instance-${index}`);
+            carouselClonedNode.querySelector(`.row`).classList = `swiper-wrapper`;
+            // Добавляем класс для дочерних элементов
+            for (const childElement of childrenData) {
+                childElement.classList.add(`swiper-slide`);
             }
-            //Get children collection
-            let itemChildrenHTML = item.innerHTML;
-            item.innerHTML = '';
-            //Add slider wrapper
-            item.innerHTML = `<div class="swiper-wrapper"></div>`;
-            item.querySelector('.swiper-wrapper').innerHTML = itemChildrenHTML;
-            //Init carousel
-            const instance = new Swiper(item, {
+            carouselDataFragment.appendChild(carouselClonedNode);
+            // Очищаем родительский блок
+            parentContainer.innerHTML = ``;
+            // Вставляем новые данные
+            parentContainer.appendChild(carouselDataFragment);
+            // Инициализируем карусель
+            const swiperInstance = new Swiper(`.swiper-instance-${index}`, {
                 slidesPerView: 1,
-                loop: true,
+                loop: false,
                 pagination: {
-                    el: item.closest('.carousel').querySelector('.swiper-pagination')
+                    el: customCarouselWrapper.querySelector('.swiper-pagination')
                 },
                 navigation: {
-                    prevEl: item.closest('.carousel').querySelector('.carousel__btn-prev'),
-                    nextEl: item.closest('.carousel').querySelector('.carousel__btn-next')
+                    prevEl: customCarouselWrapper.querySelector('.carousel__btn-prev'),
+                    nextEl: customCarouselWrapper.querySelector('.carousel__btn-next')
                 }
             });
-            instance.update();
-            customCarouselCollection.push(instance);
+            swiperInstance.update();
         });
     }
 }
 
 function destroyCustomCarousel() {
-    let customCarouselElementsCollection = document.querySelectorAll('.custom-carousel');
-    if (customCarouselElementsCollection.length) {
-        customCarouselElementsCollection.forEach((item, index) => {
-            item.classList.remove('swiper-container');
-            item.classList.remove('instance-' + index);
-            //Remove slider class
-            for (const childInstance of item.querySelector('.swiper-wrapper').children) {
-                childInstance.classList.remove('swiper-slide');
+    const customSwiperElements = Array.from(document.querySelectorAll('div[class*="swiper-instance"]'));
+
+    if (customSwiperElements.length) {
+        customSwiperElements.forEach((customSwiperElement, index) => {
+            for (const customSwiperChildElement of customSwiperElement.querySelectorAll(`div[class*="col"]`)) {
+                customSwiperChildElement.classList.remove(`swiper-slide`);
             }
-            //Get children collection
-            let itemChildrenHTML = item.querySelector('.swiper-wrapper').innerHTML;
-            item.querySelector('.swiper-wrapper').innerHTML = '';
-            //Remove slider wrapper
-            item.querySelector('.swiper-wrapper').remove();
-            item.innerHTML = itemChildrenHTML;
-            //Destroy carousel
-            customCarouselCollection.forEach(item => {
-                item.destroy();
-            });
+            customSwiperElement.classList.remove(`swiper-container`, `swiper-instance-${index}`);
+            customSwiperElement.querySelector(`.swiper-wrapper`).classList = `row`;
+            // "Убиваем" карусель
+            const customSwiperInstance = customSwiperElement.swiper;
+            customSwiperInstance.destroy();
         });
     }
 }
