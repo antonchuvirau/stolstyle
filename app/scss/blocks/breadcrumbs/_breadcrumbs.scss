@@ -28,4 +28,9 @@
             margin-right: 0;
         }
     }
+    & span {
+        &.current-item {
+            margin-right: 0;
+        }
+    }
 }
