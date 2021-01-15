@@ -65,11 +65,15 @@
                     this._el.querySelector(`.calculation-form__section:nth-child(2)`).classList.add(`calculation-form__section_hidden`);
                     this._el.querySelector(`.calculation-form__section:nth-child(3)`).classList.add(`calculation-form__section_hidden`);
                     this._el.querySelector(`.calculation-form__section-note`).classList.remove(`calculation-form__section-note_hidden`);
+                    document.querySelector(`.calculation__img`).querySelector(`img:last-child`).classList.add(`calculation__img-item_active`);
+                    document.querySelector(`.calculation__img`).querySelector(`img:nth-child(2)`).classList.remove(`calculation__img-item_active`);
                 }
                 else {
                     this._el.querySelector(`.calculation-form__section:nth-child(2)`).classList.remove(`calculation-form__section_hidden`);
                     this._el.querySelector(`.calculation-form__section:nth-child(3)`).classList.remove(`calculation-form__section_hidden`);
                     this._el.querySelector(`.calculation-form__section-note`).classList.add(`calculation-form__section-note_hidden`);
+                    document.querySelector(`.calculation__img`).querySelector(`img:nth-child(2)`).classList.add(`calculation__img-item_active`);
+                    document.querySelector(`.calculation__img`).querySelector(`img:last-child`).classList.remove(`calculation__img-item_active`);
                 }
             }
             if (target.matches(`input[type="radio"][name*="cover-"]`)) {
@@ -86,6 +90,13 @@
                 const tableTypeInputs = this._el.querySelectorAll(`input[name=${targetAttrName}]`);
                 const targetTableTypeIndex = utilsModule.getCollectionItemIndex(tableTypeInputs, target);
                 this._calculatorTableTypeIndex = targetTableTypeIndex;
+                // Show important message for figure table
+                if (this._calculatorTableTypeIndex === 2) {
+                    this._el.querySelector(`.calculation-form__section-alert`).classList.add(`calculation-form__section-alert_active`);
+                }
+                else {
+                    this._el.querySelector(`.calculation-form__section-alert`).classList.remove(`calculation-form__section-alert_active`);
+                }
                 // Показываем поля для ввода размеров в зависимости от типа стола
                 this.showNecessarySizeInputs(this._calculatorProductIndex, this._calculatorTableTypeIndex);
             }

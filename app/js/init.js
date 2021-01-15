@@ -65,13 +65,13 @@ const MIN_PRICE = 10;
 const DELIVERY_DATA = [{
         id: 0,
         name: `Курьером по Беларуси`,
-        price: 6,
+        price: 8,
         checked: true
     },
     {
         id: 1,
         name: `До пункта выдачи`,
-        price: 2
+        price: 6
     },
     {
         id: 2,
