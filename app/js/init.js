@@ -71,7 +71,7 @@ const DELIVERY_DATA = [{
     {
         id: 1,
         name: `До пункта выдачи`,
-        price: 6
+        price: 2
     },
     {
         id: 2,
