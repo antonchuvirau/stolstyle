@@ -676,7 +676,7 @@
     }
 }
 .news {
-    padding-bottom: 50px;
+    padding: 50px 0;
     position: relative;
 
     &__grid {
@@ -745,17 +745,19 @@
     &__img {
         position: absolute;
         max-width: 770px;
-        top: 40px;
+        max-height: 100%;
+        top: 50px;
         right: 0;
+        z-index: -1;
     }
 
     &__container {
         position: relative;
-        z-index: 1;
     }
 }
 .delivery {
     padding: 180px 0;
+    padding-top: 130px;
 
     &__title {
         margin-bottom: 40px;

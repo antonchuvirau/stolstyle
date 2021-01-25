@@ -17,7 +17,7 @@ const calculatorContainer = document.querySelector(`.calculation`);
 const callBackModalButton = document.querySelector(`.modal__form-button`);
 const telInputElements = document.querySelectorAll(`input[type="tel"]`);
 const productGalleryContainer = document.querySelector(`.product-gallery__container`);
-
+const productThumbsBox = document.querySelector(`.product-gallery__thumbs`);
 
 // Константы
 const DELIVERY_ID = 0;
@@ -171,6 +171,14 @@ const productCarouselSwiperOptions = {
     }
 };
 const productGalleryOptions = {
+    thumbs: {
+        swiper: {
+            el: productThumbsBox,
+            slidesPerView: 5,
+            spaceBetween: 10
+        },
+        autoScrollOffset: 2
+    },
     effect: 'fade',
     fadeEffect: {
         crossFade: true

@@ -107,6 +107,7 @@
         }
         &_active {
             color: $primary-color;
+            pointer-events: none;
         }
     }
 }
