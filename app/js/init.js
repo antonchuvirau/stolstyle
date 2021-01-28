@@ -61,7 +61,7 @@ const PRODUCTS = [{
         }]
     }
 ];
-const MIN_PRICE = 10;
+const MIN_PRICE = 0;
 const DELIVERY_DATA = [{
         id: 0,
         name: `Курьером по Беларуси`,
@@ -90,7 +90,7 @@ const PAYMENT_DATA = [{
     },
     {
         id: 2,
-        name: `Картой онлайн`
+        name: `Картой онлайн/ЕРИП`
     }
 ];
 const OFFSET_Y_STEP = 5;
