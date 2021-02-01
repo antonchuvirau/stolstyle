@@ -22,6 +22,15 @@
 
             if (target.matches(`.radio__input`)) {
                 const deliveryId = +target.value;
+                const basketNameLabel = document.querySelector(`label[for="name"]`);
+
+                // Check delivery option and change input label name
+                if (deliveryId !== 2) {
+                    basketNameLabel.textContent = `ФИО (для оформления доставки):`;
+                }
+                else {
+                    basketNameLabel.textContent = `Ваше имя:`;
+                }
 
                 utilsModule.removeActiveClass(deliveryOptionsContent, `delivery-options-content__item_active`);
                 deliveryOptionsContent[deliveryId].classList.add(`delivery-options-content__item_active`);
