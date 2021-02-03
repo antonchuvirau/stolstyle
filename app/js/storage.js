@@ -145,7 +145,10 @@
         }
 
         findStorageProduct(productData) {
-            return this._storageData.products.find(storageDataProduct => storageDataProduct.productId === productData.productId) ? true : false;
+            if (productData.productId) {
+                return this._storageData.products.find(storageDataProduct => storageDataProduct.productId === productData.productId) ? true : false;
+            }
+            return this._storageData.products.find(storageDataProduct => storageDataProduct.id === productData.id) ? true : false;
         }
     }
 

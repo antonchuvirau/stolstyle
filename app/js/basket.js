@@ -220,6 +220,9 @@
                     // Закрываем модальное окно корзины
                     jQuery.modal.close();
                 }
+                else {
+                    smallBasketModule.updateSmallBasketQuantity(storageModule.getProductQuantity());
+                }
             }
             if (target.matches(`.quantity__btn`)) {
                 const productElement = target.closest(`.products-list__item`);
