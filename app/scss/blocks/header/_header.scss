@@ -83,6 +83,10 @@
         &:last-child {
             margin-bottom: 0;
         }
+        &_active {
+            pointer-events: none;
+            opacity: .8;
+        }
     }
     &__social {
         padding: 30px 0;

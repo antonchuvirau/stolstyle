@@ -33,6 +33,7 @@
                         promocodeRequest
                             .then(resp => resp.json())
                             .then(data => {
+                                console.log(data);
                                 const result = data.find(dataItem => dataItem[`name`].toLowerCase() === promocodeInputValue.toLowerCase());
 
                                 if (result) {
