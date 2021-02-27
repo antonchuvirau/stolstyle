@@ -19,22 +19,6 @@ document.addEventListener(`DOMContentLoaded`, () => {
     // Карусель на продуктовой странице
     new Swiper(productCarouselContainer, productCarouselSwiperOptions);
 
-    jQuery('[data-modal]').on(`click`, function () {
-        jQuery(jQuery(this).data(`modal`)).modal({
-            fadeDuration: FADE_DURATION,
-            fadeDelay: FADE_DELAY
-        });
-        return false;
-    });
-
-    if (jQuery('.timer').data('.timer')) {
-        jQuery('.timer').countdown({
-            date: jQuery('.timer').data('date') + ' 00:00:00',
-            offset: +3,
-            hideOnComplete: false
-        });
-    }
-
     if (callButtonElement) {
         callButtonElement.addEventListener(`click`, onCallButtonElementClickHandler);
     }
@@ -86,4 +70,21 @@ document.addEventListener('wpcf7invalid', function () {
 }, false);
 window.addEventListener(`resize`, () => {
     changeLayout();
+});
+jQuery(document).ready(function() {
+    jQuery('[data-modal]').on(`click`, function () {
+        jQuery(jQuery(this).data(`modal`)).modal({
+            fadeDuration: FADE_DURATION,
+            fadeDelay: FADE_DELAY
+        });
+        return false;
+    });
+
+    if (jQuery('.timer').length) {
+        jQuery('.timer').countdown({
+            date: jQuery('.timer').data('date') + ' 00:00:00',
+            offset: +3,
+            hideOnComplete: false
+        });
+    }
 });
