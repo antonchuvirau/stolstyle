@@ -64,9 +64,8 @@ const PRODUCTS = [{
 const MIN_PRICE = 0;
 const DELIVERY_DATA = [{
         id: 0,
-        name: `Курьером по Беларуси`,
-        price: 9,
-        checked: true
+        name: `До пункта выдачи`,
+        price: 3
     },
     {
         id: 1,
@@ -75,8 +74,9 @@ const DELIVERY_DATA = [{
     },
     {
         id: 2,
-        name: `До пункта выдачи`,
-        price: 3
+        name: `Курьером по Беларуси`,
+        price: 9,
+        checked: true
     },
     {
         id: 3,

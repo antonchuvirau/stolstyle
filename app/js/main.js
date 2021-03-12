@@ -49,8 +49,9 @@ document.addEventListener(`DOMContentLoaded`, () => {
 document.addEventListener(`click`, onDocumentClickHandler);
 window.addEventListener(`scroll`, onWindowScrollHandler);
 document.addEventListener('wpcf7mailsent', function (evt) {
+    console.log(evt);
     // Get contact form ID
-    if (evt.detail.contactFormId === '17') {
+    if (evt.detail.contactFormId === 17) {
         jQuery.modal.close();
         // Google conversion
         dataLayer.push({'event': 'callback'});
