@@ -50,11 +50,13 @@
 
             // Получаем поля для проверки
             const formDeliveryAddressInput = this._el.querySelector(`input[name="delivery-address"]`);
+            const formDeliveryMinskAddressInput = this._el.querySelector(`input[name="delivery-minsk-address"]`);
             const formTelInput = this._el.querySelector(`input[name="tel"]`);
 
             // Получаем значения полей формы
             const formDeliveryAddresses = [
                 formData.get(`delivery-address`),
+                formData.get(`delivery-minsk-address`),
                 formData.get(`pick-up-point`)
             ];
             const formTelValue = formData.get(`tel`);
@@ -82,10 +84,25 @@
                     }
                     break;
                 case 1:
+                    if (formDeliveryAddresses[this._basketDeliveryData.id] === ``) {
+                        formDeliveryMinskAddressInput.classList.add(`error`);
+                        // Возвращаем кнопку отправки данных в исходное состояние
+                        setTimeout(function () {
+                            formSubmitButton.textContent = `Оформить заказ`;
+                            formSubmitButton.classList.remove(`button_progress`);
+                            formSubmitButton.classList.add(`error`);
+                        }, 300);
+                    } else {
+                        formDeliveryMinskAddressInput.classList.remove(`error`);
+                        // Обновляем данные объекта заказ
+                        this.updateBasketOrderData(`delivery_address`, formDeliveryAddresses[this._basketDeliveryData.id]);
+                    }
+                    break;
+                case 2:
                     // Обновляем данные объекта заказа
                     this.updateBasketOrderData(`delivery_address`, formDeliveryAddresses[this._basketDeliveryData.id]);
                     break;
-                case 2:
+                case 3:
                     // Обновляем данные объекта заказа
                     this.updateBasketOrderData(`delivery_address`);
                     break;

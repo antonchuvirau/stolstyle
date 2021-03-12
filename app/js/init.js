@@ -65,16 +65,21 @@ const MIN_PRICE = 0;
 const DELIVERY_DATA = [{
         id: 0,
         name: `Курьером по Беларуси`,
-        price: 8,
+        price: 9,
         checked: true
     },
     {
         id: 1,
-        name: `До пункта выдачи`,
-        price: 2
+        name: `Курьером по Минску`,
+        price: 7
     },
     {
         id: 2,
+        name: `До пункта выдачи`,
+        price: 3
+    },
+    {
+        id: 3,
         name: `Самовывоз`,
         price: 0
     }

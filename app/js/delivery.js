@@ -25,7 +25,7 @@
                 const basketNameLabel = document.querySelector(`label[for="name"]`);
 
                 // Check delivery option and change input label name
-                if (deliveryId !== 2) {
+                if (deliveryId !== 3) {
                     basketNameLabel.textContent = `ФИО (для оформления доставки):`;
                 }
                 else {

@@ -41,6 +41,20 @@
             margin-right: 0;
         }
     }
+    &_direction {
+        &-v {
+            flex-direction: column;
+            & .basket {
+                &__radio {
+                    margin: 0;
+                    margin-bottom: 10px;
+                    &:last-child {
+                        margin-bottom: 0;
+                    }
+                }
+            }
+        }
+    }
 }
 
 .icon {
