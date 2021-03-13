@@ -290,6 +290,7 @@
                 font-size: 1.4rem;
                 color: rgba($black-color, .6);
                 padding-left: 20px;
+                max-width: 460px;
                 &::before {
                     content: '';
                     position: absolute;
@@ -2584,9 +2585,9 @@
                 margin-right: 15px;
                 margin-bottom: 10px;
                 max-width: none;
-                // &:nth-child(2n) {
-                //     margin-right: 0;
-                // }
+                &:nth-child(2) {
+                    margin-right: 0;
+                }
                 &:last-child {
                     margin-bottom: 0;
                 }
@@ -2895,6 +2896,14 @@
                 }
                 &:first-child {
                     margin-top: 0;
+                }
+                &-alert {
+                    top: calc(100% - 3px);
+                    font-size: 1.2rem;
+                    padding-left: 0;
+                    &::before {
+                        content: none;
+                    }
                 }
             }
             &__container {
