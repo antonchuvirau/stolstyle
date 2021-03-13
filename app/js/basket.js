@@ -55,9 +55,9 @@
 
             // Получаем значения полей формы
             const formDeliveryAddresses = [
-                formData.get(`delivery-address`),
+                formData.get(`pick-up-point`),
                 formData.get(`delivery-minsk-address`),
-                formData.get(`pick-up-point`)
+                formData.get(`delivery-address`)
             ];
             const formTelValue = formData.get(`tel`);
             const formNameValue = formData.get(`name`);
@@ -69,6 +69,10 @@
             // Проверяем тип доствки
             switch (this._basketDeliveryData.id) {
                 case 0:
+                    // Обновляем данные объекта заказа
+                    this.updateBasketOrderData(`delivery_address`, formDeliveryAddresses[this._basketDeliveryData.id]);
+                    break;
+                case 1:
                     if (formDeliveryAddresses[this._basketDeliveryData.id] === ``) {
                         formDeliveryAddressInput.classList.add(`error`);
                         // Возвращаем кнопку отправки данных в исходное состояние
@@ -83,7 +87,7 @@
                         this.updateBasketOrderData(`delivery_address`, formDeliveryAddresses[this._basketDeliveryData.id]);
                     }
                     break;
-                case 1:
+                case 2:
                     if (formDeliveryAddresses[this._basketDeliveryData.id] === ``) {
                         formDeliveryMinskAddressInput.classList.add(`error`);
                         // Возвращаем кнопку отправки данных в исходное состояние
@@ -97,10 +101,6 @@
                         // Обновляем данные объекта заказ
                         this.updateBasketOrderData(`delivery_address`, formDeliveryAddresses[this._basketDeliveryData.id]);
                     }
-                    break;
-                case 2:
-                    // Обновляем данные объекта заказа
-                    this.updateBasketOrderData(`delivery_address`, formDeliveryAddresses[this._basketDeliveryData.id]);
                     break;
                 case 3:
                     // Обновляем данные объекта заказа
