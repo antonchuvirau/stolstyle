@@ -50,6 +50,11 @@
         @include font-weight('bold');
         color: $primary-color;
         margin-right: 10px;
+        &-old {
+            text-decoration: line-through;
+            opacity: .85;
+            margin-right: 5px;
+        }
     }
     &__form {
         &-button {

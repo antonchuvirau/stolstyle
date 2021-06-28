@@ -1196,6 +1196,12 @@
                         letter-spacing: -0.03em;
                         font-weight: 800;
                         color: $primary-color;
+                        & span {
+                            opacity: .85;
+                            text-decoration: line-through;
+                            margin-right: 10px;
+                            font-size: 4rem;
+                        }
                     }
                 }
             }
@@ -2683,6 +2689,9 @@
                 & > span {
                     &:last-child {
                         font-size: 4rem;
+                        & span {
+                            font-size: 3rem;
+                        }
                     }
                 }
             }
