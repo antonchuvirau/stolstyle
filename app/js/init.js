@@ -27,15 +27,15 @@ const PRODUCTS = [{
         image: `/wp-content/themes/stolstyle/img/s-basket-img.jpg`,
         covers: [{
                 name: `Глянцевая 1.8 мм`,
-                price: 59
+                price: 80
             },
             {
                 name: `Глянцевая 2.5 мм`,
-                price: 75
+                price: 105
             },
             {
                 name: `Рифлёная 1.8 мм`,
-                price: 65
+                price: 85
             }
         ],
         tables: [{
@@ -65,18 +65,18 @@ const MIN_PRICE = 0;
 const DELIVERY_DATA = [{
         id: 0,
         name: `До пункта выдачи`,
-        price: 3,
+        price: 4.5,
         checked: true
     },
     {
         id: 1,
         name: `Курьером по Минску`,
-        price: 7
+        price: 8
     },
     {
         id: 2,
         name: `Курьером по Беларуси`,
-        price: 9
+        price: 11
     },
     {
         id: 3,

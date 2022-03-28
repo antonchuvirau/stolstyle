@@ -52,7 +52,7 @@
         margin-right: 10px;
         &-old {
             text-decoration: line-through;
-            opacity: .85;
+            color: rgba($gray-color, .5);
             margin-right: 5px;
         }
     }
