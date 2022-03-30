@@ -5,12 +5,6 @@
             "name": "Накладка",
             "type": "product",
             "checked": true
-        },
-        {
-            "id": 1,
-            "name": "Скатерть",
-            "type": "product",
-            "checked": false
         }
     ],
     "tables": [
@@ -40,11 +34,11 @@
         },
         {
             "id": 3,
-            "productIndex": 1,
-            "name": "Прямоугольный",
+            "productIndex": 0,
+            "name": "Овал",
             "type": "table",
-            "checked": true,
-            "hidden": true
+            "checked": false,
+            "hidden": false
         }
     ],
     "covers": [
@@ -71,21 +65,13 @@
             "type": "cover",
             "checked": false,
             "hidden": false
-        },
-        {
-            "id": 3,
-            "productIndex": 1,
-            "name": "Глянцевая 0.6 мм",
-            "type": "cover",
-            "checked": true,
-            "hidden": true
         }
     ],
     "inputs": [
         {
             "id": 0,
             "productIndex": 0,
-            "tableTypeIndex": [0,2],
+            "tableTypeIndex": [0,2,3],
             "name": "Ширина стола (см)",
             "type": "width",
             "hidden": false
@@ -93,7 +79,7 @@
         {
             "id": 1,
             "productIndex": 0,
-            "tableTypeIndex": [0,2],
+            "tableTypeIndex": [0,2,3],
             "name": "Длина стола (см)",
             "type": "length",
             "hidden": false
@@ -104,24 +90,6 @@
             "tableTypeIndex": [1],
             "name": "Диаметр стола (см)",
             "type": "diameter",
-            "hidden": true
-        },
-        {
-            "id": 3,
-            "productIndex": 1,
-            "tableTypeIndex": [0,2],
-            "defaultValue": 135,
-            "name": "Ширина скатерти (см)",
-            "type": "width",
-            "disabled": true,
-            "hidden": true
-        },
-        {
-            "id": 4,
-            "productIndex": 1,
-            "tableTypeIndex": [0,2],
-            "name": "Длина скатерти (см)",
-            "type": "length",
             "hidden": true
         }
     ]

@@ -46,19 +46,11 @@ const PRODUCTS = [{
             },
             {
                 name: `Фигурный`
+            },
+            {
+                name: `Овал`
             }
         ]
-    },
-    {
-        name: `Скатерть`,
-        image: `/wp-content/themes/stolstyle/img/s-basket-img.jpg`,
-        covers: [{
-            name: `Глянцевая 0.6 мм`,
-            price: 20
-        }],
-        tables: [{
-            name: `Прямоугольный`
-        }]
     }
 ];
 const MIN_PRICE = 0;

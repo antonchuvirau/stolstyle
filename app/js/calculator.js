@@ -135,8 +135,9 @@
             fetch(this._calculatorData)
                 .then((resp) => resp.json())
                 .then((optionsData) => {
-                    const {products, tables, covers, inputs} = optionsData;
-                    this.renderCalculatorOptions(products, `.calculator-products`);
+                    console.log(optionsData);
+                    const {tables, covers, inputs} = optionsData;
+                    // this.renderCalculatorOptions(products, `.calculator-products`);
                     this.renderCalculatorOptions(tables, `.calculator-tables`);
                     this.renderCalculatorOptions(covers, `.calculator-covers`);
                     this.renderCalculatorSizeInputs(inputs, `.calculator-inputs`);
@@ -297,6 +298,7 @@
             switch(tableTypeIndex) {
                 case 0:
                 case 2:
+                case 3:
                     const tableTypeWidthInputElement = this._el.querySelector(`.calculator-form-field[data-product-index="${productIndex}"] input[name="width-${productIndex}"]`);
                     const tableTypeLengthInputElement = this._el.querySelector(`.calculator-form-field[data-product-index="${productIndex}"] input[name="length-${productIndex}"]`);
                     // Получаем значения
@@ -339,6 +341,7 @@
                 // Получаем площадь прямоугольного и фигурного стола
                 case 0:
                 case 2:
+                case 3:
                     if (productIndex === 1) {
                         tableSquare = +tableSizes[1] / 100;
                     }
