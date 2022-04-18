@@ -123,4 +123,43 @@
             }
         }
     }
+    &[id="modal-table-1"] {
+        max-width: 800px;
+        padding: 0;
+        & .modal-content {
+            &__grid {
+                @include flex(row, center);
+                & img {
+                    max-width: 415px;
+                }
+            }
+            &__text {
+                padding: 25px 35px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .modal-content {
+        &[id="modal-table-1"] {
+            & .modal-content {
+                &__grid {
+                    flex-direction: column;
+                    padding: 25px;
+                    & img {
+                        max-width: 300px;
+                        width: 100%;
+                    }
+                }
+                &__text {
+                    padding: 0;
+                    margin-top: 25px;
+                    & p, a, li {
+                        font-size: 1.5rem;
+                    }
+                }
+            }
+        }
+    }
 }

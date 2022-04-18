@@ -12,6 +12,7 @@
             "id": 0,
             "productIndex": 0,
             "name": "Прямоугольный",
+            "icon": "/wp-content/themes/stolstyle/img/table-1.svg",
             "type": "table",
             "checked": true,
             "hidden": false
@@ -20,14 +21,7 @@
             "id": 1,
             "productIndex": 0,
             "name": "Круглый",
-            "type": "table",
-            "checked": false,
-            "hidden": false
-        },
-        {
-            "id": 2,
-            "productIndex": 0,
-            "name": "Фигурный",
+            "icon": "/wp-content/themes/stolstyle/img/table-2.svg",
             "type": "table",
             "checked": false,
             "hidden": false
@@ -36,6 +30,16 @@
             "id": 3,
             "productIndex": 0,
             "name": "Овал",
+            "icon": "/wp-content/themes/stolstyle/img/table-3.svg",
+            "type": "table",
+            "checked": false,
+            "hidden": false
+        },
+        {
+            "id": 2,
+            "productIndex": 0,
+            "name": "Фигурный",
+            "icon": "/wp-content/themes/stolstyle/img/table-4.svg",
             "type": "table",
             "checked": false,
             "hidden": false
@@ -46,22 +50,24 @@
             "id": 0,
             "productIndex": 0,
             "name": "Глянцевая 1.8 мм",
+            "link": "/glyancevaya-plenka/",
             "type": "cover",
             "checked": true,
-            "hidden": false
-        },
-        {
-            "id": 1,
-            "productIndex": 0,
-            "name": "Глянцевая 2.5 мм",
-            "type": "cover",
-            "checked": false,
             "hidden": false
         },
         {
             "id": 2,
             "productIndex": 0,
             "name": "Рифлёная 1.8 мм",
+            "link": "/riflenaya-plenka/",
+            "type": "cover",
+            "checked": false,
+            "hidden": false
+        },
+        {
+            "id": 1,
+            "productIndex": 0,
+            "name": "Глянцевая 2.5 мм",
             "type": "cover",
             "checked": false,
             "hidden": false

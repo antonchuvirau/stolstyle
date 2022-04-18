@@ -330,7 +330,55 @@ $page_id = 2;
 							<div class="calculation-form__section">
 								<p class="calculation-form__section-name">Выберите форму вашего стола</p>
 								<div class="calculation-form__section-container calculation-form__group calculator-tables"></div>
-								<span class="calculation-form__section-alert">Для фигурных и овальных столов мы вырезаем прямоугольную форму. Подрезать можно по нашей <a href="<?php echo esc_url( get_page_link(197) ); ?>">инструкции</a></span>
+							</div>
+							<div class="calculation-form__section">
+								<div class="b-alerts">
+									<div class="b-alerts__item">
+										<div class="b-radius">
+											<label class="checkbox b-radius__checkbox">
+												<input type="checkbox" name="radius" class="checkbox__input b-radius__checkbox-input">
+												<p class="checkbox__text">Вырезать пленку с закругленными углами</p>
+											</label>
+											<div class="d-none b-radius__grid">
+												<div class="b-radius__container">
+													<p class="b-radius__title">Выберите радиус закругления углов (см.)</p>
+													<p class="b-radius__label">Радиус, см:</p>
+													<div class="quantity radius-quantity b-radius__handler">
+														<button type="button" data-action="remove" class="quantity__btn quantity__btn-minus">
+															<svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+																<path d="M15 1.875C7.75195 1.875 1.875 7.75195 1.875 15C1.875 22.248 7.75195 28.125 15 28.125C22.248 28.125 28.125 22.248 28.125 15C28.125 7.75195 22.248 1.875 15 1.875ZM20.625 15.7031C20.625 15.832 20.5195 15.9375 20.3906 15.9375H9.60938C9.48047 15.9375 9.375 15.832 9.375 15.7031V14.2969C9.375 14.168 9.48047 14.0625 9.60938 14.0625H20.3906C20.5195 14.0625 20.625 14.168 20.625 14.2969V15.7031Z" fill="#C4C4C4" />
+															</svg>
+														</button>
+														<input type="text" value="0" name="quantity" class="quantity__input">
+														<button type="button" data-action="add" class="quantity__btn quantity__btn-plus">
+															<svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+																<path d="M15 1.875C7.75195 1.875 1.875 7.75195 1.875 15C1.875 22.248 7.75195 28.125 15 28.125C22.248 28.125 28.125 22.248 28.125 15C28.125 7.75195 22.248 1.875 15 1.875ZM20.625 15.7031C20.625 15.832 20.5195 15.9375 20.3906 15.9375H15.9375V20.3906C15.9375 20.5195 15.832 20.625 15.7031 20.625H14.2969C14.168 20.625 14.0625 20.5195 14.0625 20.3906V15.9375H9.60938C9.48047 15.9375 9.375 15.832 9.375 15.7031V14.2969C9.375 14.168 9.48047 14.0625 9.60938 14.0625H14.0625V9.60938C14.0625 9.48047 14.168 9.375 14.2969 9.375H15.7031C15.832 9.375 15.9375 9.48047 15.9375 9.60938V14.0625H20.3906C20.5195 14.0625 20.625 14.168 20.625 14.2969V15.7031Z" fill="#C4C4C4" />
+															</svg>
+														</button>
+													</div>
+												</div>
+												<div class="b-alerts__container">
+													<span class="calculation-form__section-alert">Подробнее о том как измерить радиус угла <button class="link" type="button" data-modal="#modal-table-1">по ссылке</button></span>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="d-none b-alerts__item">
+										<div class="b-alerts__container">
+											<span class="calculation-form__section-alert">Для данных столов мы вырезаем прямоугольную форму. Подрезать можно по нашей <a href="<?php echo esc_url( get_page_link(197) ); ?>">инструкции</a></span>
+										</div>
+									</div>
+									<div class="d-none b-alerts__item">
+										<div class="b-alerts__container">
+											<span class="calculation-form__section-alert">Внимание! Заказ на овальные столы оформляется через нашего менеджера. Для этого пришлите фото вашего стола сверху в <a href="https://msng.link/o/?375296334466=vi">Viber</a>.</span>
+										</div>
+									</div>
+									<div class="d-none b-alerts__item">
+										<div class="b-alerts__container">
+											<span class="calculation-form__section-alert">Для фигурных столов мы вырезаем прямоугольную форму. Подрезать можно по нашей <a href="<?php echo esc_url( get_page_link(197) ); ?>">инструкции</a></span>
+										</div>
+									</div>
+								</div>
 							</div>
 							<div class="calculation-form__section">
 								<p class="calculation-form__section-name">Выберите тип желаемой пленки</p>
@@ -338,9 +386,7 @@ $page_id = 2;
 							</div>
 							<div class="calculation-form__section">
 								<p class="calculation-form__section-name">Укажите размеры и количество</p>
-								<div class="calculation-form__section-container group calculator-inputs"></div>
-							</div>
-							<div class="calculation-form__section">
+								<div class="calculation-form__section-container group calculator-inputs">
 								<div class="calculation-form__section-container calculation-form__quantity">
 									<p class="calculation-form__label">Количество, штук</p>
 									<div class="calculation-form__container quantity calculator-quantity">
@@ -357,6 +403,25 @@ $page_id = 2;
 										</button>
 									</div>
 								</div>
+								</div>
+							</div>
+							<div class="calculation-form__section">
+								<!-- <div class="calculation-form__section-container calculation-form__quantity">
+									<p class="calculation-form__label">Количество, штук</p>
+									<div class="calculation-form__container quantity calculator-quantity">
+										<button type="button" data-action="remove" class="quantity__btn quantity__btn-minus">
+											<svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+												<path d="M15 1.875C7.75195 1.875 1.875 7.75195 1.875 15C1.875 22.248 7.75195 28.125 15 28.125C22.248 28.125 28.125 22.248 28.125 15C28.125 7.75195 22.248 1.875 15 1.875ZM20.625 15.7031C20.625 15.832 20.5195 15.9375 20.3906 15.9375H9.60938C9.48047 15.9375 9.375 15.832 9.375 15.7031V14.2969C9.375 14.168 9.48047 14.0625 9.60938 14.0625H20.3906C20.5195 14.0625 20.625 14.168 20.625 14.2969V15.7031Z" fill="#C4C4C4" />
+											</svg>
+										</button>
+										<input type="text" value="1" name="quantity" class="quantity__input">
+										<button type="button" data-action="add" class="quantity__btn quantity__btn-plus">
+											<svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+												<path d="M15 1.875C7.75195 1.875 1.875 7.75195 1.875 15C1.875 22.248 7.75195 28.125 15 28.125C22.248 28.125 28.125 22.248 28.125 15C28.125 7.75195 22.248 1.875 15 1.875ZM20.625 15.7031C20.625 15.832 20.5195 15.9375 20.3906 15.9375H15.9375V20.3906C15.9375 20.5195 15.832 20.625 15.7031 20.625H14.2969C14.168 20.625 14.0625 20.5195 14.0625 20.3906V15.9375H9.60938C9.48047 15.9375 9.375 15.832 9.375 15.7031V14.2969C9.375 14.168 9.48047 14.0625 9.60938 14.0625H14.0625V9.60938C14.0625 9.48047 14.168 9.375 14.2969 9.375H15.7031C15.832 9.375 15.9375 9.48047 15.9375 9.60938V14.0625H20.3906C20.5195 14.0625 20.625 14.168 20.625 14.2969V15.7031Z" fill="#C4C4C4" />
+											</svg>
+										</button>
+									</div>
+								</div> -->
 							</div>
 							<p class="calculation-form__total">Итого: <span class="calculation-form__total-value">0.0</span> руб.</p>
 							<button disabled type="button" class="button button_size-l calculation-form__button">Добавить в корзину</button>

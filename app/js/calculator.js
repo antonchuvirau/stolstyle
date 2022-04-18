@@ -11,6 +11,7 @@
         _calculatorData = `/wp-content/themes/stolstyle/data/calculator.json`;
         _calculatorTableSize = [0,0];
         _calculatorProductQuanity = 1;
+        _radiusProductQuanity = 0;
         _calculatorProductPrice = 0;
         _calculatorProductIndex = 0;
         _calculatorTableTypeIndex = 0;
@@ -91,11 +92,12 @@
                 const targetTableTypeIndex = utilsModule.getCollectionItemIndex(tableTypeInputs, target);
                 this._calculatorTableTypeIndex = targetTableTypeIndex;
                 // Show important message for figure table
-                if (this._calculatorTableTypeIndex === 2) {
-                    this._el.querySelector(`.calculation-form__section-alert`).classList.add(`calculation-form__section-alert_active`);
+                const alertsCollection = document.querySelectorAll(`.b-alerts__item`);
+                for (const alertItem of alertsCollection) {
+                    alertItem.classList.add(`d-none`);
                 }
-                else {
-                    this._el.querySelector(`.calculation-form__section-alert`).classList.remove(`calculation-form__section-alert_active`);
+                if (targetTableTypeIndex != 1) {
+                    alertsCollection[targetTableTypeIndex].classList.remove(`d-none`);
                 }
                 // Показываем поля для ввода размеров в зависимости от типа стола
                 this.showNecessarySizeInputs(this._calculatorProductIndex, this._calculatorTableTypeIndex);
@@ -118,6 +120,16 @@
                     fadeDelay: FADE_DELAY
                 });
             }
+            if (target.matches(`.b-radius__checkbox-input`)) {
+                if (target.checked) {
+                    target.parentElement.nextElementSibling.classList.remove(`d-none`);
+                }
+                else {
+                    target.parentElement.nextElementSibling.classList.add(`d-none`);
+                    target.value = 0;
+                    this._radiusProductQuanity = 0;
+                }
+            }
         }
     
         onCalculatorContainerInputHandler(evt) {
@@ -135,7 +147,6 @@
             fetch(this._calculatorData)
                 .then((resp) => resp.json())
                 .then((optionsData) => {
-                    console.log(optionsData);
                     const {tables, covers, inputs} = optionsData;
                     // this.renderCalculatorOptions(products, `.calculator-products`);
                     this.renderCalculatorOptions(tables, `.calculator-tables`);
@@ -152,14 +163,23 @@
         renderCalculatorOptions(calculatorOptionsData, optionsContainer) {
             const calculatorOptionTemplate = document.querySelector(`#calculator-option`).content;
             const calculatorOptionsFragment = document.createDocumentFragment();
+            console.log(calculatorOptionsData);
     
             calculatorOptionsData.forEach((calculatorOptionData) => {
                 const calculatorOptionClonedTemplateNode = calculatorOptionTemplate.cloneNode(true);
-    
+
                 if (calculatorOptionData.type !== `product`) {
                     calculatorOptionClonedTemplateNode.querySelector(`.calculation-form__radio`).classList.add(`calculator-form-field`);
                     calculatorOptionClonedTemplateNode.querySelector(`.calculation-form__radio-input`).setAttribute(`name`, `${calculatorOptionData.type + '-' + calculatorOptionData.productIndex}`);
                     calculatorOptionClonedTemplateNode.querySelector(`.calculation-form__radio`).setAttribute(`data-product-index`, calculatorOptionData.productIndex);
+                    calculatorOptionClonedTemplateNode.querySelector(`.calculation-form__radio-icon img`).setAttribute(`src`, `${calculatorOptionData.icon}`);
+                    if (calculatorOptionData.type == `cover`) {
+                        calculatorOptionClonedTemplateNode.querySelector(`.calculation-form__radio-icon`).style.display = `none`;
+                        if (calculatorOptionData.id !== 1) {
+                            calculatorOptionClonedTemplateNode.querySelector(`.calculation-form__radio-link`).classList.remove(`d-none`);
+                            calculatorOptionClonedTemplateNode.querySelector(`.calculation-form__radio-link`).setAttribute(`href`, `${calculatorOptionData.link}`);
+                        }
+                    }
                 }
                 else {
                     calculatorOptionClonedTemplateNode.querySelector(`.calculation-form__radio-input`).setAttribute(`name`, `${calculatorOptionData.type}`);
@@ -199,16 +219,17 @@
                 calculatorSizeInputClonedTemplateNode.querySelector(`.calculation-form__label`).textContent = calculatorSizeInputData.name;
                 calculatorSizeInputsFragment.appendChild(calculatorSizeInputClonedTemplateNode);
             });
-            this._el.querySelector(sizeInputsContainer).appendChild(calculatorSizeInputsFragment);
+            this._el.querySelector(sizeInputsContainer).insertBefore(calculatorSizeInputsFragment, document.querySelector(`.calculation-form__quantity`));
         }
     
         setCalculatorProductData(productIndex = this._calculatorProductIndex, tableTypeIndex = this._calculatorTableTypeIndex, coverTypeIndex = this._calculatorCoverTypeIndex, productPrice = this._calculatorProductPrice, productQuantity = this._calculatorProductQuanity, tableSize = this._calculatorTableSize) {
             this._calculatorProductData = {
                 name: `${PRODUCTS[productIndex].name}`,
-                image: `${PRODUCTS[productIndex].image}`,
+                image: `${PRODUCTS[productIndex].tables[tableTypeIndex].icon}`,
                 table: {
                     name: `${PRODUCTS[productIndex].tables[tableTypeIndex].name}`,
-                    size: tableSize
+                    size: tableSize,
+                    radius: productIndex === 0 ? `${this._radiusProductQuanity}` : 0
                 },
                 cover: `${PRODUCTS[productIndex].covers[coverTypeIndex].name}`,
                 quantity: +productQuantity,
@@ -251,13 +272,26 @@
             const coverPrice = this.getCoverTypePrice(productIndex, coverTypeIndex);
             const tableSizes = this.getTableTypeSizeValues(productIndex, tableTypeIndex);
             const tableSquarePrice = this.calculateTableSquarePrice(productIndex, tableTypeIndex, tableSizes);
-            const productPrice = (tableSquarePrice * coverPrice) * productQuantity;
+            let productPrice = 0;
+            if (tableSquarePrice !== 0) {
+                if (tableTypeIndex === 2) {
+                    productPrice = ((tableSquarePrice * coverPrice) + FIXED_OVAL_PAYMENT) * productQuantity;
+                }
+                else {
+                    productPrice = (tableSquarePrice * coverPrice) * productQuantity;
+                }
+            }
             this.updateCalculatorProductPrice(productPrice);
         }
     
         updateCalculatorProductQuantity(value) {
             this._calculatorProductQuanity = +value;
-            this._el.querySelector(`.quantity__input`).value = this._calculatorProductQuanity;
+            this._el.querySelector(`.calculator-quantity .quantity__input`).value = this._calculatorProductQuanity;
+        }
+
+        updateRadiusProductQuantity(value) {
+            this._radiusProductQuanity = +value;
+            this._el.querySelector(`.radius-quantity .quantity__input`).value = this._radiusProductQuanity;
         }
     
         updateCalculatorProductPrice(value) {
@@ -333,6 +367,10 @@
             this._calculatorTableSize = tableTypeSizes;
             return tableTypeSizes;
         }
+
+        getTableTypeIndex() {
+            return this._calculatorTableTypeIndex;
+        }
     
         calculateTableSquarePrice(productIndex, tableTypeIndex, tableSizes) {
             let tableSquare;
@@ -393,6 +431,10 @@
     
         getCalculatorProductQuantity() {
             return this._calculatorProductQuanity;
+        }
+
+        getRadiusProductQuantity() {
+            return this._radiusProductQuanity;
         }
     
         getCalculatorProductData() {

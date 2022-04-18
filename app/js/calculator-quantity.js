@@ -20,11 +20,13 @@
             if (target.matches(`button`)) {
                 const buttonActionValue = target.dataset.action;
                 const calculatorProductPrice = calculatorModule.getCalculatorProductPrice();
+                const calculatorTableTypeIndex = calculatorModule.getTableTypeIndex();
 
                 // Получаем текущее значение количества товара
                 this._calculatorProductQuantity = calculatorModule.getCalculatorProductQuantity();
                 // Вычисляем цену за один товар
                 const productPriceForOneItem = +(calculatorProductPrice / this._calculatorProductQuantity).toFixed(1);
+                console.log(calculatorProductPrice, productPriceForOneItem);
                 
                 switch (buttonActionValue) {
                     case `add`:

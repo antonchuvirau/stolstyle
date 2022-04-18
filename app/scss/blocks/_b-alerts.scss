@@ -1,0 +1,9 @@
+.b-alerts {
+    &__container {
+        max-width: 460px;
+        background: rgba($white-color, .6);
+        border-radius: 6px;
+        padding: 15px 40px;
+        padding-right: 15px;
+    }
+}

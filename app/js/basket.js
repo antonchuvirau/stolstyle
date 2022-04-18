@@ -282,7 +282,6 @@
         }
 
         renderBasketProducts(productsData) {
-            console.log(productsData);
             if (productsData.length) {
                 const basketProducsFragment = document.createDocumentFragment();
                 const basketProductsContainer = this._el.querySelector(`.products-list`);
@@ -325,14 +324,20 @@
             basketProductClonedTemplateNode.querySelector(`.products-list__item-img`).setAttribute(`src`, image);
             basketProductClonedTemplateNode.querySelector(`.products-list__item-name`).textContent = name;
             if (!basketProductData.productId) {
-                basketProductClonedTemplateNode.querySelector(`.products-list__item-cover`).textContent = `Плёнка: ${cover.toLowerCase()}`;
+                basketProductClonedTemplateNode.querySelector(`.products-list__item-cover`).textContent = `${cover}`;
+                basketProductClonedTemplateNode.querySelector(`.products-list__item-cover`).insertAdjacentHTML(`beforeend`, `</br>`);
+                basketProductClonedTemplateNode.querySelector(`.products-list__item-cover`).insertAdjacentHTML(`beforeend`, `${table.name}`);
+                if (basketProductData.table.radius) {
+                    basketProductClonedTemplateNode.querySelector(`.products-list__item-cover`).insertAdjacentHTML(`beforeend`, `</br>`);
+                    basketProductClonedTemplateNode.querySelector(`.products-list__item-cover`).insertAdjacentHTML(`beforeend`, `Радиус ${table.radius} см`);
+                }
             }
             // Добавляем размеры в зависимости от типа стола
             if (table.size[1]) {
-                basketProductClonedTemplateNode.querySelector(`.products-list__item-size`).textContent = `Размеры: ${table.size[0]} x ${table.size[1]} см`;
+                basketProductClonedTemplateNode.querySelector(`.products-list__item-size`).textContent = `${table.size[0]} x ${table.size[1]} см`;
                 basketProductClonedTemplateNode.querySelector(`.products-list__item-img`).setAttribute(`alt`, `Защитная ${name.toLowerCase()}, ${table.name.toLowerCase()} стол шириной ${table.size[0]} см и длиной ${table.size[1]} см`);
             } else {
-                basketProductClonedTemplateNode.querySelector(`.products-list__item-size`).textContent = `Размеры: ${table.size[0]} см`;
+                basketProductClonedTemplateNode.querySelector(`.products-list__item-size`).textContent = `${table.size[0]} см`;
                 basketProductClonedTemplateNode.querySelector(`.products-list__item-img`).setAttribute(`alt`, `Защитная ${name.toLowerCase()}, ${table.name.toLowerCase()} стол диаметром ${table.size[0]} см`);
             }
             basketProductClonedTemplateNode.querySelector(`.quantity__input`).value = quantity;

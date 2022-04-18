@@ -1,0 +1,44 @@
+.b-radius {
+    &__container {
+        padding: 20px 25px;
+        background: rgba($white-color, .6);
+        border-radius: 6px;
+        max-width: 460px;
+        &:not(:last-child) {
+            margin-bottom: 10px;
+        }
+    }
+    &__title {
+        margin: 0;
+        font-family: 'Jost';
+        font-weight: 600;
+        color: $black-color;
+        line-height: 1.35;
+        letter-spacing: -0.02em;
+        margin-bottom: 5px;
+    }
+    &__label {
+        margin: 0;
+        font-family: 'Jost';
+        color: $black-color;
+        line-height: 1.35;
+        font-size: 1.4rem;
+        letter-spacing: -0.02em;
+        margin-bottom: 10px;
+    }
+    &__handler {
+        background: $white-color;
+        border: 1px solid rgba(229, 229, 229, .4);
+    }
+    &__checkbox {
+        margin-bottom: 20px;
+    }
+}
+
+@media screen and (max-width: 575px) {
+    .b-radius {
+        &__container {
+            padding: 20px;
+        }
+    }
+}

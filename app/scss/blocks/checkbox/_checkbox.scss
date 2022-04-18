@@ -14,6 +14,9 @@
                 background: $primary-color;
                 border-color: $primary-color;
             }
+            &::after {
+                opacity: 1;
+            }
         }
     }
     &__text {
@@ -37,6 +40,7 @@
             width: 15px;
             height: 13px;
             background: icon('s-icon-check.svg') no-repeat 50%;
+            opacity: 0;
             left: 2.5px;
             top: 3.5px;
         }

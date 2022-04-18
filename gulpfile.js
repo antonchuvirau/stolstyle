@@ -33,6 +33,7 @@ gulp.task('scripts', function(){
         'app/js/promocode.js',
         'app/js/calculator.js',
         'app/js/calculator-quantity.js',
+        'app/js/radius-quantity.js',
         'app/js/main.js'
     ])
     .pipe(babel({

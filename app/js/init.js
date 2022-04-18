@@ -23,32 +23,41 @@ const productThumbsBox = document.querySelector(`.product-gallery__thumbs`);
 const DELIVERY_ID = 0;
 const PAYMENT_ID = 0;
 const PRODUCTS = [{
-        name: `Накладка`,
-        image: `/wp-content/themes/stolstyle/img/s-basket-img.jpg`,
+        name: `Накладка на стол`,
         covers: [{
+                id: 0,
                 name: `Глянцевая 1.8 мм`,
-                price: 80
+                price: 80,
+                image: `/wp-content/themes/stolstyle/img/cover-1.jpg`
             },
             {
-                name: `Глянцевая 2.5 мм`,
-                price: 105
-            },
-            {
+                id: 1,
                 name: `Рифлёная 1.8 мм`,
-                price: 85
+                price: 85,
+                image: `/wp-content/themes/stolstyle/img/cover-3.jpg`
+            },
+            {
+                id: 2,
+                name: `Глянцевая 2.5 мм`,
+                price: 105,
+                image: `/wp-content/themes/stolstyle/img/cover-2.jpg`
             }
         ],
         tables: [{
-                name: `Прямоугольный`
+                name: `Прямоугольный`,
+                icon: `/wp-content/themes/stolstyle/img/table-1.svg`
             },
             {
-                name: `Круглый`
+                name: `Круглый`,
+                icon: `/wp-content/themes/stolstyle/img/table-2.svg`
             },
             {
-                name: `Фигурный`
+                name: `Овал`,
+                icon: `/wp-content/themes/stolstyle/img/table-3.svg`
             },
             {
-                name: `Овал`
+                name: `Фигурный`,
+                icon: `/wp-content/themes/stolstyle/img/table-4.svg`
             }
         ]
     }
@@ -94,6 +103,7 @@ const OFFSET_Y_STEP = 5;
 const TIMEOUT = 300;
 const FADE_DURATION = 250;
 const FADE_DELAY = .5;
+const FIXED_OVAL_PAYMENT = 15;
 
 // Опции слайдеров
 const aboutCarouselSwiperOptions = {
