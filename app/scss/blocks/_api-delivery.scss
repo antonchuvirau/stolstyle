@@ -1,0 +1,10 @@
+.api-delivery {
+    &__title {
+        margin: 0;
+        font-size: 1.8rem;
+        @include font-weight('bold');
+        line-height: 1.25;
+        letter-spacing: -.02em;
+        margin-bottom: 25px;
+    }
+}

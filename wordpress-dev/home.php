@@ -370,7 +370,7 @@ $page_id = 2;
 									</div>
 									<div class="d-none b-alerts__item">
 										<div class="b-alerts__container">
-											<span class="calculation-form__section-alert">Внимание! Заказ на овальные столы оформляется через нашего менеджера. Для этого пришлите фото вашего стола сверху в <a href="https://msng.link/o/?375296334466=vi">Viber</a>.</span>
+											<span class="calculation-form__section-alert">Внимание! Заказ на овальные столы оформляется через нашего менеджера. Для этого пришлите фото вашего стола в <a href="https://msng.link/o/?375296334466=vi">Viber</a>.</span>
 										</div>
 									</div>
 									<div class="d-none b-alerts__item">

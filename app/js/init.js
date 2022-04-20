@@ -65,8 +65,7 @@ const PRODUCTS = [{
 const MIN_PRICE = 0;
 const DELIVERY_DATA = [{
         id: 0,
-        name: `До пункта выдачи`,
-        price: 4.5,
+        name: `Доставка Европочтой`,
         checked: true
     },
     {
@@ -74,11 +73,11 @@ const DELIVERY_DATA = [{
         name: `Курьером по Минску`,
         price: 8
     },
-    {
-        id: 2,
-        name: `Курьером по Беларуси`,
-        price: 11
-    },
+    // {
+    //     id: 2,
+    //     name: `Курьером по Беларуси`,
+    //     price: 11
+    // },
     {
         id: 3,
         name: `Самовывоз`,

@@ -21,6 +21,21 @@
             <div class="basket__section-grid">
                 <div class="group group_direction-v delivery-options"></div>
             </div>
+            <div class="basket__section-grid">
+                <div class="api-delivery">
+                    <p class="api-delivery__title">Тип доставки:</p>
+                    <div class="group group_direction-v api-delivery__grid">
+                        <label class="radio basket__radio api-delivery__radio-item">
+                            <input type="radio" checked name="api" class="radio__input">
+                            <p class="radio__value">Отделение почтовой связи</p>
+                        </label>
+                        <label class="radio basket__radio api-delivery__radio-item">
+                            <input type="radio" name="api" class="radio__input">
+                            <p class="radio__value">Курьерская доставка</p>
+                        </label>
+                    </div>
+                </div>
+            </div>
             <div class="basket__section-grid basket-delivery__content delivery-options-content">
                 <div data-delivery-id="0" class="form__row basket__section-grid-row delivery-options-content__item delivery-options-content__item_active">
                     <label class="form__label" for="pick-up-point">Выберите отделение:</label>

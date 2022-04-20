@@ -534,7 +534,6 @@ function send_order() {
 		// Получатель письма
 		$mail->addAddress('stolstyleshop@gmail.com');
 		$mail->addAddress('info@stolstyle.by');
-		$mail->addAddress('anton_chuvirau@icloud.com');
 		
 		// Отправка сообщения
 		$mail->Subject = "Новый заказ";
