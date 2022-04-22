@@ -150,6 +150,12 @@ add_action('wp_ajax_nopriv_content', 'get_post_content');
 add_action('wp_ajax_product', 'get_product_data');
 add_action('wp_ajax_nopriv_product', 'get_product_data');
 
+add_action('wp_ajax_evropochta', 'get_evropochta');
+add_action('wp_ajax_nopriv_evropochta', 'get_evropochta');
+
+add_action('wp_ajax_evropochta_warehouse', 'get_evropochta_warehouse');
+add_action('wp_ajax_nopriv_evropochta_warehouse', 'get_evropochta_warehouse');
+
 /**
  * Implement the Custom Header feature.
  */
@@ -605,3 +611,71 @@ function get_product_data() {
 
 // Добавляем размер новый размер картинки для галереи продукта
 add_image_size( 'stolstyle-product-size', 500, 380, true );
+
+function get_evropochta() {
+	$curl = curl_init();
+
+	$data = array(
+		"CRC" => "",
+		"Packet" => array(
+			"JWT" => "null",
+			"MethodName" => "GetJWT",
+			"ServiceNumber" => "07BEB740-4CE2-4852-8F0C-CA4E4A5E3434",
+			"Data" => array(
+				"LoginName" => "191904007_IlukevichS",
+				"Password" => "KDHCWSTRVGM0E7D",
+				"LoginNameTypeId" => "1"
+			),
+		),
+	);
+	
+	curl_setopt_array($curl, array(
+		CURLOPT_URL => 'https://api.eurotorg.by:10352/Json',
+		CURLOPT_RETURNTRANSFER => true,
+		CURLOPT_CUSTOMREQUEST => 'POST',
+		CURLOPT_POSTFIELDS => json_encode( $data ),
+		CURLOPT_HTTPHEADER => array(
+		  'Content-Type: application/json'
+		),
+	));
+	
+	$response = curl_exec($curl);
+	curl_close($curl);
+
+	echo $response;
+
+	wp_die();
+}
+
+function get_evropochta_warehouse() {
+	$curl = curl_init();
+
+curl_setopt_array($curl, array(
+  CURLOPT_URL => 'https://api.eurotorg.by:10352/Json',
+  CURLOPT_RETURNTRANSFER => true,
+  CURLOPT_ENCODING => '',
+  CURLOPT_MAXREDIRS => 10,
+  CURLOPT_TIMEOUT => 0,
+  CURLOPT_FOLLOWLOCATION => true,
+  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+  CURLOPT_CUSTOMREQUEST => 'POST',
+  CURLOPT_POSTFIELDS =>'{
+    "CRC":"",
+                "Packet":{
+                    "JWT":"eyJhbGciOiJSUzUxMiIsInR5cCI6IkpXVCJ9.eyJMb2dpbklkIjoiODU0MyIsIkxvZ2luVHlwZUlkIjoiMSIsImlhdCI6IjE2NTA2NTAzODciLCJqdGkiOiJ7Qzc5OTAzNUEtQzE4RS00NkU4LTk2QUEtREFFN0YwNTIxOTI2fSJ9.ZviMs_Vl1rhzNIJZ-TmUspLph2F0YUlx-X1SaVh0A4ELVa97Y17N4IX1milbu4e3obrk8RrxaidLoPBGrUxWygBA8ylBwM1G9BAOT_2CCC78xu7GAFs4k5WXhS5ukMrvhNFMJoLK41RGGdYnRV3s1ZiSIUMtlYV7bu8ZbUcGwE7FmyuIlveWzWkcVgonRbHdRq4FrDyHqXWUBowtrSCimbTgPh-L_KADOwNMpbFCoa-0lENus9uggAYA3Ltz9NvNBieruApA0J3uIadhlps4UvLOW9joZpgv20uhR6yTV1NZ3YHDgRxWYdaRrPGJtOo4sVoCc-s0O1nVtDzK26v0BQ",
+                    "MethodName": "Postal.OfficesOut",
+                    "ServiceNumber":"07BEB740-4CE2-4852-8F0C-CA4E4A5E3434",
+                    "Data":{}
+                }
+}',
+  CURLOPT_HTTPHEADER => array(
+    'Content-Type: application/json'
+  ),
+));
+
+$response = curl_exec($curl);
+
+curl_close($curl);
+echo $response;
+wp_die();
+}

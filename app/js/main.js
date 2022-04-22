@@ -72,6 +72,17 @@ window.addEventListener(`resize`, () => {
     changeLayout();
 });
 jQuery(document).ready(function() {
+    jQuery.ajax({
+        url: ajax.url,
+        type: "POST",
+        data: {
+            action: `evropochta_warehouse`
+        },
+        success: function(response) {
+            $responseInstance = JSON.parse(response);
+            console.log($responseInstance);
+        }
+    });
     jQuery('[data-modal]').on(`click`, function () {
         jQuery(jQuery(this).data(`modal`)).modal({
             fadeDuration: FADE_DURATION,

@@ -1,6 +1,8 @@
 'use strict';
 
 (function() {
+    const utilsModule = window.globalUtils;
+    
     class DeliveryAddress {
         _deliveryAddressData = `/wp-content/themes/stolstyle/data/evropochta.json`;
         _deliveryAddressContainer = `#pick-up-point`;
@@ -11,17 +13,18 @@
 
         renderDeliveryAddress() {
             let deliveryAddressList = ``;
-            const deliveryAddressData = this.getDeliveryAddressData();
+            // const deliveryAddressData = this.getDeliveryAddressData();
+            // this.getDeliveryAddressData();
             const deliveryAddressFragment = document.createDocumentFragment();
             
-            deliveryAddressData.then(resp => resp.json()).then(result => {
-                result.data.forEach(deliveryAddressSectionData => {
-                    const deliveryAddressSection = this.createDeliveryAddressSection(deliveryAddressSectionData);
-                    deliveryAddressFragment.appendChild(deliveryAddressSection);
-                });
-                // Добавляем данные в разметку
-                document.querySelector(this._deliveryAddressContainer).appendChild(deliveryAddressFragment);
-            });
+            // deliveryAddressData.then(resp => resp.json()).then(result => {
+            //     result.data.forEach(deliveryAddressSectionData => {
+            //         const deliveryAddressSection = this.createDeliveryAddressSection(deliveryAddressSectionData);
+            //         deliveryAddressFragment.appendChild(deliveryAddressSection);
+            //     });
+            //     // Добавляем данные в разметку
+            //     document.querySelector(this._deliveryAddressContainer).appendChild(deliveryAddressFragment);
+            // });
         }
 
         createDeliveryAddressSection(deliveryAddressSectionData) {
@@ -47,7 +50,17 @@
         }
 
         getDeliveryAddressData() {
-            return fetch(this._deliveryAddressData);
+            // return fetch(this._deliveryAddressData);
+            jQuery.ajax({
+                url: ajax.url,
+                type: "POST",
+                data: {
+                    action: `evropochta`
+                },
+                success: function(response) {
+                    console.log(JSON.parse(response));
+                }
+            });
         }
     }
 
