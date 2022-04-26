@@ -382,6 +382,7 @@ $page_id = 2;
 							</div>
 							<div class="calculation-form__section">
 								<p class="calculation-form__section-name">Выберите тип желаемой пленки</p>
+								<div class="calculation-form__section-note"><p>Вырезаем точно в размер. Усадка пройдена (<a class="link" href="#">Подробнее</a>)</p></div>
 								<div class="calculation-form__section-container calculation-form__group calculator-covers"></div>
 							</div>
 							<div class="calculation-form__section">
