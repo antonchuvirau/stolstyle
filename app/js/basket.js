@@ -159,11 +159,12 @@
             basketOrderRequest
                 .then(resp => resp.json())
                 .then(data => {
+                    console.log(data);
                     if (data.result === `success`) {
                         // Отправляем данные в аналитику Google
-                        dataLayer.push({
-                            'event': 'order'
-                        });
+                        // dataLayer.push({
+                        //     'event': 'order'
+                        // });
                         // После отправки данных на почту проверяем метод оплаты
                         if (+this._basketPaymentData.id !== 2) {
                             setTimeout(function () {

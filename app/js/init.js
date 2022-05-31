@@ -66,7 +66,8 @@ const MIN_PRICE = 0;
 const DELIVERY_DATA = [{
         id: 0,
         name: `Доставка Европочтой`,
-        checked: true
+        checked: true,
+        price: 4.5
     },
     {
         id: 1,

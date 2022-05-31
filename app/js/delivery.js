@@ -33,12 +33,12 @@
                 }
 
                 // Show API
-                if (deliveryId !== 0) {
-                    document.querySelector(`.api-delivery`).classList.add(`d-none`);
-                }
-                else {
-                    document.querySelector(`.api-delivery`).classList.remove(`d-none`);
-                }
+                // if (deliveryId !== 0) {
+                //     document.querySelector(`.api-delivery`).classList.add(`d-none`);
+                // }
+                // else {
+                //     document.querySelector(`.api-delivery`).classList.remove(`d-none`);
+                // }
 
                 utilsModule.removeActiveClass(deliveryOptionsContent, `delivery-options-content__item_active`);
                 if (deliveryId !== 0) {

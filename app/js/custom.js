@@ -100,6 +100,7 @@ jQuery(document).ready(function () {
                 //Collect basket data
                 let data = basket.collectBasketData();
                 if (data) {
+                    console.log(data);
                     document.querySelector('input[name="f-delivery"]').value = data.info[0].delivery.name + '(' + data.info[0].delivery.price + ' руб.)' + ', ' + data.info[0].delivery.address;
                     document.querySelector('input[name="f-payment"]').value = data.info[1].payment.name;
                     //Collect all params

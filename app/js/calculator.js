@@ -90,14 +90,23 @@
                 const targetAttrName = target.getAttribute(`name`);
                 const tableTypeInputs = this._el.querySelectorAll(`input[name=${targetAttrName}]`);
                 const targetTableTypeIndex = utilsModule.getCollectionItemIndex(tableTypeInputs, target);
+                const addRadiusEl = document.querySelector(`.b-radius`);
                 this._calculatorTableTypeIndex = targetTableTypeIndex;
                 // Show important message for figure table
-                const alertsCollection = document.querySelectorAll(`.b-alerts__item`);
+                const alertsCollection = document.querySelectorAll(`.calculation-form__wrapper:first-child .b-alerts__item`);
                 for (const alertItem of alertsCollection) {
                     alertItem.classList.add(`d-none`);
                 }
                 if (targetTableTypeIndex != 1) {
                     alertsCollection[targetTableTypeIndex].classList.remove(`d-none`);
+                }
+                if (targetTableTypeIndex != 0) {
+                    addRadiusEl.classList.add(`d-none`);
+                    alertsCollection[alertsCollection.length - 1].classList.add(`d-none`);
+                }
+                else {
+                    addRadiusEl.classList.remove(`d-none`);
+                    alertsCollection[alertsCollection.length - 1].classList.remove(`d-none`)
                 }
                 // Показываем поля для ввода размеров в зависимости от типа стола
                 this.showNecessarySizeInputs(this._calculatorProductIndex, this._calculatorTableTypeIndex);
@@ -175,10 +184,10 @@
                     calculatorOptionClonedTemplateNode.querySelector(`.calculation-form__radio-icon img`).setAttribute(`src`, `${calculatorOptionData.icon}`);
                     if (calculatorOptionData.type == `cover`) {
                         calculatorOptionClonedTemplateNode.querySelector(`.calculation-form__radio-icon`).style.display = `none`;
-                        if (calculatorOptionData.id !== 1) {
-                            calculatorOptionClonedTemplateNode.querySelector(`.calculation-form__radio-link`).classList.remove(`d-none`);
-                            calculatorOptionClonedTemplateNode.querySelector(`.calculation-form__radio-link`).setAttribute(`href`, `${calculatorOptionData.link}`);
-                        }
+                        // if (calculatorOptionData.id !== 1) {
+                        //     calculatorOptionClonedTemplateNode.querySelector(`.calculation-form__radio-link`).classList.remove(`d-none`);
+                        //     calculatorOptionClonedTemplateNode.querySelector(`.calculation-form__radio-link`).setAttribute(`href`, `${calculatorOptionData.link}`);
+                        // }
                     }
                 }
                 else {

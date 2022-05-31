@@ -1,8 +1,9 @@
 .b-radius {
     &__container {
         padding: 20px 25px;
-        background: rgba($white-color, .6);
-        border-radius: 6px;
+        // background: rgba($white-color, .6);
+        background: #F7F7F7;
+        border-radius: 10px;
         max-width: 460px;
         &:not(:last-child) {
             margin-bottom: 10px;
@@ -31,7 +32,11 @@
         border: 1px solid rgba(229, 229, 229, .4);
     }
     &__checkbox {
-        margin-bottom: 20px;
+        // margin-bottom: 20px;
+    }
+    &__grid {
+        margin-top: 20px;
+        // border-radius: 10px;
     }
 }
 

@@ -382,7 +382,7 @@ $page_id = 2;
 							</div>
 							<div class="calculation-form__section">
 								<p class="calculation-form__section-name">Выберите тип желаемой пленки</p>
-								<div class="calculation-form__section-note"><p>Вырезаем точно в размер. Усадка пройдена (<a class="link" href="#">Подробнее</a>)</p></div>
+								<div class="calculation-form__section-note"><p>Вырезаем точно в размер. Усадка пройдена (<a target="_blank" rel="noopener noreferrer" class="link" href="/process-usadki-zashitnoj-plenki/">Подробнее</a>)</p></div>
 								<div class="calculation-form__section-container calculation-form__group calculator-covers"></div>
 							</div>
 							<div class="calculation-form__section">
@@ -431,7 +431,7 @@ $page_id = 2;
 				</div>
 			</div>
 		</div>
-		<div class="calculation__img">
+		<div class="d-none calculation__img">
 			<img class="calculation__img-item calculation__img-item_active" src="<?php echo get_template_directory_uri(); ?>/img/s-calculation-img.jpg" alt="<?php echo esc_attr(get_bloginfo('name')); ?>">
 			<img class="calculation__img-item" src="<?php echo get_template_directory_uri(); ?>/img/tablecloth.jpg" alt="<?php echo esc_attr(get_bloginfo('name')); ?>">
 		</div>
